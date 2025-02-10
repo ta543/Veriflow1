@@ -4,19 +4,15 @@
  * The purpose of this module is to manage all functions handling test steps
  * on {@code LoginPage}.
  *
- *
  * VeriFlow Test Automation - LoginPage
  */
 
-import { getLocatorByXPath } from '../../src/tobias-playwright/utils/locator-utils';
-import { getLocatorByText } from '../../src/tobias-playwright/utils/locator-utils';
-import { click } from '../../src/tobias-playwright/utils/action-utils';
+import { getLocatorByRole, getLocatorByXPath, getLocatorByText, getLocator, getLocatorByPlaceholder } from '../../src/tobias-playwright/utils/locator-utils';
 import { LoginCredentials } from '../testdata/the-internet-test-data';
 import { expectElementToBeVisible } from '../../src/tobias-playwright/utils/assert-utils';
-import { getLocatorByRole } from '../../src/tobias-playwright/utils/locator-utils';
 
-const userName = () => getLocatorByXPath("//input[@id='username']");
-const passwordField = () => getLocatorByXPath("//input[@id='password']");
+const userName = () => getLocator(`#username`).or(getLocatorByPlaceholder('Username', { exact: true }));
+const password = () => getLocator(`#password`).or(getLocatorByPlaceholder('Password', { exact: true }));
 const loginButton = () => getLocatorByRole('button', { name: 'Login' });
 const errorMessage = `//*[contains(@class,'error-message')]`;
 const successMessage = () => getLocatorByText('You logged into a secure area!');
@@ -25,10 +21,9 @@ const logoutMessage = () => getLocatorByXPath('//div[@id="flash"]');
 const loginPageHeader = () => getLocatorByXPath("//h2[normalize-space()='Login Page']");
 
 export async function loginSuccessfully() {
-  await userName().click();
   await userName().fill(LoginCredentials.username);
-  await passwordField().click();
-  await passwordField().fill(LoginCredentials.password);
+  await password().click();
+  await password().fill(LoginCredentials.password);
   await loginButton().click();
 }
 
