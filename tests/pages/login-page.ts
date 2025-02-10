@@ -7,7 +7,7 @@
  * VeriFlow Test Automation - LoginPage
  */
 
-import { getLocatorByRole, getLocatorByXPath, getLocatorByText, getLocator, getLocatorByPlaceholder } from '../../src/tobias-playwright/utils/locator-utils';
+import { getLocatorByRole, getLocatorByXPath, getLocatorByText, getLocator, getLocatorByPlaceholder, click } from '../../src/tobias-playwright/utils/locator-utils';
 import { LoginCredentials } from '../testdata/the-internet-test-data';
 import { expectElementToBeVisible } from '../../src/tobias-playwright/utils/assert-utils';
 
@@ -22,7 +22,6 @@ const loginPageHeader = () => getLocatorByXPath("//h2[normalize-space()='Login P
 
 export async function loginSuccessfully() {
   await userName().fill(LoginCredentials.username);
-  await password().click();
   await password().fill(LoginCredentials.password);
   await loginButton().click();
 }
