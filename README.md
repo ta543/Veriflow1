@@ -4,17 +4,13 @@
 
 <div align="center">
 
-# 🚀 Elevate Your Automation: Redefining the Future of Testing, Where Precision Meets Efficiency.
-
-## Playwright TypeScript Framework: "Your One-Stop Solution for Web (Desktop & Mobile), API, and Electron Testing"
+## Veriflow QA Framework
 
 </div>
 
 ---
 
-Welcome to the Playwright TypeScript Framework. This unique and comprehensive automation framework is designed to simplify and streamline the process of writing and managing automated tests for Web (Desktop & Mobile), APIs, and Electron Desktop applications. It's built on [Playwright](https://playwright.dev/), a powerful browser automation library, and [TypeScript](https://www.typescriptlang.org/), a statically typed superset of JavaScript, offering a robust and efficient environment for end-to-end testing.
-
-This framework is ideal for QA professionals, developers, and business analysts looking to improve their testing practices and efficiency. It's equipped with utilities that simplify test creation and maintenance, allowing you to focus on writing your tests out of the box.
+The **Playwright TypeScript Framework** is a **versatile, scalable, and efficient** automation framework designed to streamline **web (desktop & mobile), API, and Electron testing**. Built on [**Playwright**](https://playwright.dev/) and [**TypeScript**](https://www.typescriptlang.org/), it provides a **robust** and **high-performance** testing environment for QA professionals, developers, and business analysts.
 
 ## Key Features:
 
@@ -90,10 +86,6 @@ Before you begin, there are some essential requirements you must meet. Please re
 ### Installation
 
 Get started with the project by following the step-by-step installation guide. Please refer to the [Installation section](docs/Installation.md#installation) for complete instructions on setting up the project on your local machine.
-
-### Project Update Guide
-
-Keeping your project up to date is crucial. Please refer to the [Project Update Guide section](docs/Installation.md#project-update-guide) for guidelines on how to update your project to the latest version.
 
 ## Project Structure
 
@@ -326,6 +318,26 @@ Here's what each option does:
 
 For more information, please refer to the [Playwright CLI documentation](https://playwright.dev/docs/test-cli).
 
+## 🛠 GitHub Actions Pipelines
+
+This framework leverages **GitHub Actions** for seamless CI/CD integration, enabling automated test execution across multiple environments. Pre-configured pipelines include:
+
+1. **SauceLabs Regression Testing**
+
+   - Supports both **multi-threaded** and **single-threaded** executions.
+   - Ensures extensive coverage and compatibility testing across various browser versions and platforms.
+
+2. **Class Tests**
+
+   - Execute individual class-level test cases for focused validations.
+
+3. **Cache Management**
+
+   - Automated pipeline to clear caches and maintain optimal performance during repeated test executions.
+
+4. **Compilation Workflows**
+   - Ensures the framework is built and validated before test execution.
+
 ## Report Generation and Viewing
 
 Playwright Test offers several built-in reporters tailored for various requirements, along with the flexibility to integrate custom reporters. You can configure these reporters either through the command line or within the `playwright.config.ts` file. For a comprehensive guide on Playwright's in-built reporters, refer to the official [documentation](https://playwright.dev/docs/test-reporters).
@@ -392,7 +404,3 @@ Here are some recommended best practices when using this framework:
   - [Debugging](https://playwright.dev/docs/debug)
 
 In addition to these, Playwright also recommends following certain best practices. You can find more details in the [Playwright Best Practices documentation](https://playwright.dev/docs/best-practices)
-
-## Contribution guide
-
-Contributions are welcome! Please read the contributing guidelines first. (In progress)
