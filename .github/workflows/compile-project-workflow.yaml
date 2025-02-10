@@ -21,9 +21,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
-    name: 'Build and Test 🛠️'
+    name: 'Compile 🛠️'
 
     steps:
       - name: 'Checkout code'
@@ -58,18 +58,8 @@ jobs:
             exit 1
           else
             echo "result=success" >> $GITHUB_ENV
-            echo "✅ Compilation succeeded! Great job!"
+            echo "✅ Compilation succeeded!"
           fi      
-
-      # - name: 'Set Compile Result'
-      #   if: always()
-      #   run: |
-      #     if [[ "${{ steps.install_dependencies.outcome }}" == "failure" || "${{ steps.build.outcome }}" == "failure" ]]; then
-      #       echo "result=failure" >> $GITHUB_ENV
-      #       exit 1
-      #     else
-      #       echo "result=success" >> $GITHUB_ENV
-      #     fi
 
       - name: 'Apply Labels'
         if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' && always()
