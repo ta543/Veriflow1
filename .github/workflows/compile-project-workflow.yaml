@@ -1,4 +1,4 @@
-name: VeriFlow | Compile and Test
+name: VeriFlow | Compile
 
 permissions:
   contents: write
@@ -46,9 +46,10 @@ jobs:
         run: npm install
 
       - name: 'Compile TypeScript'
+        id: build
         run: npm run build
 
-      - name: 'Set Compile and Test Result'
+      - name: 'Set Compile Result'
         if: always()
         run: |
           if [[ "${{ steps.install_dependencies.outcome }}" == "failure" || "${{ steps.build.outcome }}" == "failure" ]]; then
