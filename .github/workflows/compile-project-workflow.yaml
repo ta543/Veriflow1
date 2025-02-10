@@ -122,7 +122,7 @@ jobs:
             const url = `${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
             const resultMessage = process.env.result === 'success'
               ? `✅ Build completed successfully.\n\n[View Workflow Run](${url})`
-              : `### 🔴 **Build Status: FAILED**\n❌ Build or tests failed. Check the logs for more details.\n\n[View Workflow Run](${url})`;
+              : `❌ Build failed, check the logs for more details..\n\n[View Workflow Run](${url})`;
       
             github.rest.issues.createComment({
               issue_number: context.payload.pull_request.number,
