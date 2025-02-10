@@ -60,6 +60,7 @@
     "test:chrome": "npx playwright test --retries 0 --project=chrome",
     "test:chrome-headed": "npx playwright test -j 1 --retries 0 --headed --project=chrome",
     "test:reg": "npx playwright test --project=chrome -g '@reg'",
+    "build": "tsc",
     "test:smoke": "npx playwright test --project=chrome -g '@smoke'",
     "report": "npx playwright show-report playwright-report",
     "trace": "npx playwright show-trace --port 0",
