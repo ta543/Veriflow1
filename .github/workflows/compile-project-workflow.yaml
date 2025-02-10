@@ -1,4 +1,4 @@
-name: Veriflow | Compile
+name: Veriflow
 
 permissions:
   contents: write
