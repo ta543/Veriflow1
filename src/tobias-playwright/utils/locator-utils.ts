@@ -106,6 +106,16 @@ export function getFrameLocator(frameInput: string | FrameLocator): FrameLocator
 }
 
 /**
+ * Returns a Locator object based on a CSS selector.
+ * @param {string} cssSelector - The CSS selector to locate the element.
+ * @param {LocatorOptions} [options] - Optional parameters for the Locator.
+ * @returns {Locator} - The created Locator object.
+ */
+export function getLocatorByCSS(cssSelector: string, options?: LocatorOptions): Locator {
+  return getPage().locator(cssSelector, options);
+}
+
+/**
  * Returns a Locator object based on an XPath.
  * @param {string} xpath - The XPath to locate the element.
  * @returns {Locator} - The created Locator object.

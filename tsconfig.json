@@ -19,8 +19,9 @@
     "strictPropertyInitialization": true,
     "baseUrl": "src/tobias-playwright",
     "paths": {
-      "@pages": ["./tests/pages"],
-      "@testdata": ["./tests/testdata"]
+      "@pages": ["./tests/pages/*"],
+      "@testdata": ["./tests/testdata/*"],
+      "@utils/*": ["src/utils/*"]
     },
     "declaration": false, // No need to generate declaration files (.d.ts) for a test project
     "downlevelIteration": true, // Enables support for iterating on objects like `Map` and `Set` in older environments

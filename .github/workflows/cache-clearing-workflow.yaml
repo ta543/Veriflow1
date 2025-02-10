@@ -1,0 +1,27 @@
+name: VeriFlow | Cache Clearing
+
+run-name: '👷🚧[#${{ github.run_number }}][Maintenance] Clearing all GitHub Action caches'
+
+on:
+  schedule:
+    - cron: '00 16 * * 5' # 16:00 UTC (Sweden: 18:00 Mar-Oct, 17:00 Oct-Mar)
+
+  workflow_dispatch:
+
+jobs:
+  clear-github-caches:
+    runs-on: ubuntu-latest
+    name: 'Clear GitHub Actions caches 🗑️'
+
+    steps:
+      - name: 'Install GitHub CLI'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gh
+        shell: bash
+
+      - name: 'Clear GitHub Actions caches'
+        run: |
+          gh auth login --with-token <<< "${{ secrets.PERSONAL_GITHUB_KEY }}"
+          gh cache delete --all --repo circlek-global/gmbat-tests-eu-mobile-automation
+        shell: bash

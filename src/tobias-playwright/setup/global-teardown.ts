@@ -7,7 +7,9 @@
  * the last line of output from this function may be cleared by the line reporter.
  */
 
-export default () => {
-  // console.log("Add any Teardown setup here");
-  // console.log("Add any Teardown setup here2");
-};
+import { execSync } from 'child_process';
+
+export default function globalTeardown() {
+  console.log('Global teardown is running...');
+  execSync('./generate-allure-report.sh', { stdio: 'inherit' });
+}

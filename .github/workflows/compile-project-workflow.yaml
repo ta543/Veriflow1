@@ -1,0 +1,127 @@
+name: VeriFlow | Compile
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+run-name: '👷🚧[#${{ github.run_number }}][VeriFlow] PR: "${{ github.event.pull_request.title }}"'
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    name: 'Build and Test 🛠️'
+
+    steps:
+      - name: 'Checkout code'
+        uses: actions/checkout@v4
+
+      - name: 'Set up Node.js'
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: 'Cache Node.js modules'
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node
+
+      - name: 'Install dependencies'
+        id: install_dependencies
+        run: npm install
+
+      - name: 'Compile TypeScript'
+        id: build
+        run: npm run build
+
+      - name: 'Set Compile Result'
+        if: always()
+        run: |
+          if [[ "${{ steps.install_dependencies.outcome }}" == "failure" || "${{ steps.build.outcome }}" == "failure" ]]; then
+            echo "result=failure" >> $GITHUB_ENV
+            exit 1
+          else
+            echo "result=success" >> $GITHUB_ENV
+          fi
+
+      - name: 'Apply Labels'
+        if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' && always()
+        uses: actions/github-script@v7
+        env:
+          result: ${{ env.result }}
+        with:
+          script: |
+            const labels = [
+              { name: 'build-success', color: '0E8A16', description: 'Build and tests succeeded' },
+              { name: 'build-failure', color: 'B60205', description: 'Build or tests failed' }
+            ];
+
+            const resultLabel = process.env.result === 'success' ? 'build-success' : 'build-failure';
+
+            async function manageLabels(github, context, labels, resultLabel) {
+              const issue_number = context.payload.pull_request.number;
+              const { owner, repo } = context.repo;
+
+              for (const label of labels) {
+                try {
+                  await github.rest.issues.updateLabel({
+                    owner,
+                    repo,
+                    name: label.name,
+                    color: label.color,
+                    description: label.description
+                  });
+                } catch (error) {
+                  if (error.status === 404) {
+                    await github.rest.issues.createLabel({
+                      owner,
+                      repo,
+                      name: label.name,
+                      color: label.color,
+                      description: label.description
+                    });
+                  }
+                }
+              }
+
+              await github.rest.issues.addLabels({
+                owner,
+                repo,
+                issue_number,
+                labels: [resultLabel]
+              });
+            }
+
+            manageLabels(github, context, labels, resultLabel);
+
+      - name: 'Post Comment on PR'
+        if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' && always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const url = `${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const resultMessage = process.env.result === 'success'
+              ? '✅ Build and tests completed successfully.'
+              : `❌ Build or tests failed. [View Workflow Run](${url})`;
+
+            github.rest.issues.createComment({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: resultMessage
+            });

@@ -6,7 +6,7 @@
  */
 
 import { Page, test as baseTest } from '@playwright/test';
-import { setPage } from 'utils/page-utils';
+import { setPage } from '../utils/page-utils';
 
 /**
  * A hook that runs before each test, setting the page context.

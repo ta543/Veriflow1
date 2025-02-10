@@ -4,10 +4,14 @@
  * See https://playwright.dev/docs/test-configuration for more details.
  */
 
-import { ACTION_TIMEOUT, EXPECT_TIMEOUT, NAVIGATION_TIMEOUT, TEST_TIMEOUT } from './src/tobias-playwright/utils/timeout-constants';
-import { WaitForLoadStateOptions } from './src/tobias-playwright/setup/optional-parameter-types';
+import {
+  ACTION_TIMEOUT,
+  EXPECT_TIMEOUT,
+  NAVIGATION_TIMEOUT,
+  TEST_TIMEOUT,
+} from './src/tobias-playwright/utils/timeout-constants';
+import { WaitForLoadStateOptions } from 'setup/optional-parameter-types';
 import { defineConfig, devices } from '@playwright/test';
-import { allurePlaywright } from 'allure-playwright';
 import dotenv from 'dotenv';
 dotenv.config({ path: '.env' });
 
@@ -24,7 +28,8 @@ export default defineConfig({
    * The directory where tests are located.
    * See https://playwright.dev/docs/api/class-testconfig#testconfig-testdir
    */
-  testDir: './tests',
+  testDir: './tests/testcases',
+  // testMatch: ['**/*.spec.ts', '**/*.test.ts'],
   /**
    * Determines whether to run tests within each spec file in parallel, in addition to running the spec files themselves in parallel.
    * See https://playwright.dev/docs/api/class-testconfig#testconfig-fullyparallel
@@ -50,7 +55,14 @@ export default defineConfig({
    * The reporter to use. This can be set to use a different value on CI.
    * See https://playwright.dev/docs/test-reporters
    */
-  reporter: [['./src/tobias-playwright/setup/custom-logger.ts'], ['allure-playwright'], ['html', { open: 'never' }], ['dot']],
+
+  reporter: [
+    ['./src/tobias-playwright/setup/custom-logger.ts'],
+    ['allure-playwright'],
+    ['html', { open: 'never' }],
+    ['dot'],
+  ],
+
   /**
    * Shared settings for all the projects below.
    * See https://playwright.dev/docs/api/class-testoptions

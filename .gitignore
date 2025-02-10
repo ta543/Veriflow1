@@ -7,3 +7,6 @@ node_modules/
 .idea
 .DS_Store
 allure*
+
+# Playwright
+/blob-report/

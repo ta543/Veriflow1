@@ -1,3 +1,13 @@
+/**
+ * (C) VeriFlow 2025
+ *
+ * The purpose of this module is to manage all functions handling test steps
+ * on {@code LoginPage}.
+ *
+ *
+ * VeriFlow Test Automation - LoginPage
+ */
+
 import { click, clickAndNavigate, fill, gotoURL } from '../../src/tobias-playwright/utils/action-utils';
 import { failureLoginCredentials, successLoginCredentials } from '../testdata/sauce-demo-test-data';
 import { expectElementToBeVisible } from '../../src/tobias-playwright/utils/assert-utils';

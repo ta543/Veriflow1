@@ -22,13 +22,13 @@ Ensure you have the following software installed on your machine:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/vasu31dev/playwright-ts.git
+git clone https://github.com/vasu31dev/veriflow-playwright.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd playwright-ts
+cd veriflow-playwright
 ```
 
 3. Install the dependencies:
@@ -48,7 +48,7 @@ npx playwright install
    ```bash
    git config user.email "<your-email>"
    git config user.name "<your-name>"
-   git remote set-url origin https://USERNAME:SECRETTOKEN@github.com/vasu31dev/playwright-ts.git
+   git remote set-url origin https://USERNAME:SECRETTOKEN@github.com/vasu31dev/veriflow-playwright.git
    ```
 
    Replace `<USERNAME>` with your GitHub username and `<SECRETTOKEN>` with your GitHub personal access token. If you don't have a personal access token, you can create one in your GitHub account settings following this [GitHub guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).

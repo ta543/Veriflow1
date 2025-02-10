@@ -5,6 +5,9 @@
  * You can add any initialization setup code within this function.
  */
 
-export default () => {
-  // console.log("Add any initialization setup here");
-};
+import { execSync } from 'child_process';
+
+export default function globalSetup() {
+  console.log('Global setup is running...');
+  execSync('./clean-allure-results.sh', { stdio: 'inherit' });
+}

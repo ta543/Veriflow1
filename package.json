@@ -1,5 +1,5 @@
 {
-  "name": "playwright-ts",
+  "name": "veriflow-playwright",
   "description": "Playwright TS framework is designed for Web (Desktop & Mobile), API, and Electron apps. Stable and Robust layer on top of Playwright with inbuilt Utilities, Linting, Logger, Web hooks, Github actions, Reports and much more",
   "keywords": [
     "playwright",
@@ -13,11 +13,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vasu31dev/playwright-ts.git"
+    "url": "https://github.com/ta543/Veriflow1.git"
   },
   "author": {
-    "name": "Vasudeva Annam",
-    "email": "vasu31dev@gmail.com"
+    "name": "Tobias Andersen",
+    "email": "tobias@tobiasa.com"
   },
   "env": {
     "node": true,
@@ -27,14 +27,14 @@
     "*.{json,md,ts}": [
       "prettier --write"
     ],
-    "*.{ts}": "eslint --fix"
+    "*.ts": "eslint --fix"
   },
   "dependencies": {
-    "@playwright/test": "^1.37.1",
     "@types/node": "^20.5.0",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
     "allure-commandline": "^2.23.1",
+    "allure-js-commons": "^3.1.0",
     "dotenv": "^16.3.1",
     "eslint": "^8.47.0",
     "eslint-config-prettier": "^9.0.0",
@@ -45,20 +45,25 @@
     "eslint-plugin-prettier": "^5.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.4.3",
+    "open": "^10.1.0",
     "prettier": "^3.0.2",
     "tslib": "^2.6.2",
     "typescript": "5.1.6",
     "winston": "^3.10.0"
   },
   "scripts": {
-    "test": "playwright test",
-    "test:chromium": "playwright test --retries 0 --project=chromium",
-    "test:chromium-headed": "playwright test -j 1 --retries 0 --headed --project=chromium",
-    "test:reg": "playwright test --project=chromium -g '@reg'",
-    "test:smoke": "playwright test --project=chromium -g '@smoke'",
-    "report": "playwright show-report playwright-report",
-    "ui": "playwright test --ui-port 0",
-    "trace": "playwright show-trace --port 0",
+    "test file testcase": "npx playwright test tests/testcases/the-internet-tests.spec.ts --grep=Logout test - successful logout",
+    "test file": "npx playwright test tests/testcases/the-internet-tests.spec.ts",
+    "test all": "npx playwright test",
+    "locator": "npx playwright codegen https://the-internet.herokuapp.com/",
+    "test devtools": "npx playwright test --ui",
+    "test:chrome": "npx playwright test --retries 0 --project=chrome",
+    "test:chrome-headed": "npx playwright test -j 1 --retries 0 --headed --project=chrome",
+    "test:reg": "npx playwright test --project=chrome -g '@reg'",
+    "build": "tsc",
+    "test:smoke": "npx playwright test --project=chrome -g '@smoke'",
+    "report": "npx playwright show-report playwright-report",
+    "trace": "npx playwright show-trace --port 0",
     "allure": "allure generate ./allure-results --clean && allure open ./allure-report",
     "lint": "eslint 'tests/**/*.ts' 'src/**/*.ts' 'playwright.config.ts'",
     "lint:fix": "eslint 'tests/**/*.ts' 'src/**/*.ts' 'playwright.config.ts' --fix",
@@ -72,6 +77,7 @@
     }
   },
   "devDependencies": {
+    "@playwright/test": "^1.50.1",
     "allure-playwright": "^3.1.0"
   }
 }
