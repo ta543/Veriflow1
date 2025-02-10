@@ -310,8 +310,6 @@ Here's what each option does:
 - `--max-failures 4`: Stops after the first 4 test failures. This includes a count of failures in the retry test as well.
 - `--list`: Lists all the tests, but does not run them.
 
-[![CLI Parallel Execution](http://img.youtube.com/vi/gtkoLizAsaw/0.jpg)](https://www.youtube.com/watch?v=gtkoLizAsaw 'CLI Parallel Execution')
-
 For more information, please refer to the [Playwright CLI documentation](https://playwright.dev/docs/test-cli).
 
 ## 🛠 GitHub Actions Pipelines
