@@ -3,7 +3,7 @@
  * These actions include navigation, interaction with page elements, handling of dialogs, and more.
  */
 import { Dialog, Locator, Response } from '@playwright/test';
-import { getPage } from 'utils/page-utils';
+import { getPage } from './page-utils';
 import {
   CheckOptions,
   ClearOptions,
@@ -20,10 +20,10 @@ import {
   UploadOptions,
   UploadValues,
   WaitForLoadStateOptions,
-} from 'setup/optional-parameter-types';
-import { STANDARD_TIMEOUT } from 'utils/timeout-constants';
-import { LOADSTATE } from '../../../../playwright-ts/playwright.config';
-import { getLocator } from 'utils/locator-utils';
+} from '../setup/optional-parameter-types';
+import { STANDARD_TIMEOUT } from './timeout-constants';
+import { LOADSTATE } from '../../../playwright.config';
+import { getLocator } from './locator-utils';
 
 /**
  * 1. Navigations: This section contains functions for navigating within a web page or between web pages.
@@ -94,39 +94,6 @@ export async function wait(ms: number): Promise<void> {
 export async function click(input: string | Locator, options?: ClickOptions): Promise<void> {
   const locator = getLocator(input);
   await locator.click(options);
-}
-
-/**
- * Selects an option in a dropdown by its index.
- * @param {string | Locator} input - The dropdown to select an option in.
- * @param {number} index - The index of the option to select.
- * @param {SelectOptions} options - The select options.
- */
-export async function selectOptionByIndex(input: string | Locator, index: number, options?: SelectOptions): Promise<void> {
-  const locator = getLocator(input);
-  await locator.selectOption({ index: index }, options);
-}
-
-/**
- * Selects an option in a dropdown by its value.
- * @param {string | Locator} input - The dropdown to select an option in.
- * @param {string} value - The value of the option to select.
- * @param {SelectOptions} options - The select options.
- */
-export async function selectOptionByValue(input: string | Locator, value: string, options?: SelectOptions): Promise<void> {
-  const locator = getLocator(input);
-  await locator.selectOption({ value: value }, options);
-}
-
-/**
- * Selects an option in a dropdown by its text.
- * @param {string | Locator} input - The dropdown to select an option in.
- * @param {string} text - The text of the option to select.
- * @param {SelectOptions} options - The select options.
- */
-export async function selectOptionByText(input: string | Locator, text: string, options?: SelectOptions): Promise<void> {
-  const locator = getLocator(input);
-  await locator.selectOption({ label: text }, options);
 }
 
 /**
