@@ -6,7 +6,7 @@
 
 </div>
 
-Veriflow is a **Playwright TypeScript Framework** that is **versatile, scalable, and efficient** for automation designed to streamline **web (desktop & mobile), API, and Electron testing**. Built on [**Playwright**](https://playwright.dev/) and [**TypeScript**](https://www.typescriptlang.org/), it provides a **robust** and **high-performance** testing environment for QA professionals, developers, and business analysts.
+Veriflow is a **Playwright TypeScript Framework** that is **versatile, scalable, and efficient** for automation testing designed to streamline **web (desktop & mobile), API, and Electron testing**. Built on [**Playwright**](https://playwright.dev/) and [**TypeScript**](https://www.typescriptlang.org/), it provides a **robust** and **high-performance** testing environment for QA professionals, developers, and business analysts.
 
 ## Key Features:
 
