@@ -7,10 +7,10 @@
  * VeriFlow Test Automation - The Internet Tests
  */
 
-import { test } from '../../src/tobias-playwright/setup/page-setup';
-import * as LoginPage from '../pages/sauce-demo-login-page';
-import * as MiniCart from '../pages/sauce-demo-mini-cart';
-import * as ProductsPage from '../pages/sauce-demo-products-page';
+import { test } from '@PageSetup';
+import * as LoginPage from '@SauceDemoLoginPage';
+import * as MiniCart from '@SauceDemoMiniCartPage';
+import * as ProductsPage from '@SauceDemoProductsPage';
 
 test.describe('Saucedemo tests for successful, unsuccessful logins and add product to cart', () => {
   test('Saucedemo tests - Successful login will display Products Page', async () => {

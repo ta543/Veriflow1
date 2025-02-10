@@ -7,13 +7,13 @@
  * VeriFlow Test Automation - The Internet Tests
  */
 
-import { test } from '../../src/tobias-playwright/setup/page-setup';
-import { logTestDetails as logMetadataDetails } from '../../src/tobias-playwright/utils/test-metadata';
-import * as HomePage from '../pages/home-page';
-import * as DropdownPage from '../pages/dropdown-page';
-import * as LoginPage from '../pages/login-page';
-import * as CheckboxPage from '../pages/checkbox-page';
-import * as KeypressPage from '../pages/keypress-page';
+import { test } from '@PageSetup';
+import { logTestDetails as logMetadataDetails } from '@TestMetadata';
+import * as HomePage from '@HomePage';
+import * as DropdownPage from '@DropdownPage';
+import * as LoginPage from '@LoginPage';
+import * as CheckboxPage from '@CheckboxPage';
+import * as KeypressPage from '@KeypressPage';
 
 test.describe('The Internet App Tests', () => {
   test('Dropdown test', async () => {

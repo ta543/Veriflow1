@@ -2,15 +2,14 @@
  * (C) VeriFlow 2025
  *
  * The purpose of this module is to manage all functions handling test steps
- * on {@code LoginPage}.
+ * on {@code SauceDemoProductsPage}.
  *
- *
- * VeriFlow Test Automation - LoginPage
+ * VeriFlow Test Automation - SauceDemoProductsPage
  */
 
-import { click } from '../../src/tobias-playwright/utils/action-utils';
-import { expectElementToBeHidden, expectElementToBeVisible } from '../../src/tobias-playwright/utils/assert-utils';
-import { getLocator } from '../../src/tobias-playwright/utils/locator-utils';
+import { click } from '@ActionUtils';
+import { expectElementToBeHidden, expectElementToBeVisible } from '@AssertUtils';
+import { getLocator } from '@LocatorUtils';
 
 const productsContainer = () => getLocator(`#inventory_container`).nth(0);
 const addToCartButton = `(//*[@class='inventory_item'])[%s]//*[contains(@id,'add-to-cart')]`;

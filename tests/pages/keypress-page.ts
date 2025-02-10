@@ -9,8 +9,7 @@
  * VeriFlow Test Automation - KeyPressPage
  */
 
-import { getLocatorByCSS } from '../../src/tobias-playwright/utils/locator-utils';
-import { getLocatorByXPath } from '../../src/tobias-playwright/utils/locator-utils';
+import { getLocatorByCSS, getLocatorByXPath } from '@LocatorUtils';
 
 const keyPressInput = () => getLocatorByCSS('#target');
 const resultText = () => getLocatorByXPath('//*[@id="result"]');

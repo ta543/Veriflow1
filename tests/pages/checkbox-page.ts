@@ -2,14 +2,14 @@
  * (C) VeriFlow 2025
  *
  * The purpose of this module is to manage all functions handling test steps
- * on {@code LoginPage}.
+ * on {@code CheckboxPage}.
  *
  *
- * VeriFlow Test Automation - LoginPage
+ * VeriFlow Test Automation - CheckboxPage
  */
 
-import { click } from '../../src/tobias-playwright/utils/action-utils';
-import { getLocatorByXPath } from '../../src/tobias-playwright/utils/locator-utils';
+import { click } from '@ActionUtils';
+import { getLocatorByXPath } from '@LocatorUtils';
 
 const checkbox1 = () => getLocatorByXPath("//form[@id='checkboxes']/input[1]");
 const checkbox2 = () => getLocatorByXPath("//form[@id='checkboxes']/input[2]");

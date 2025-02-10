@@ -4,7 +4,7 @@
  */
 
 import { FrameLocator, Locator, selectors } from '@playwright/test';
-import { getPage } from 'utils/page-utils';
+import { getPage } from '@PageUtils';
 import {
   GetByPlaceholderOptions,
   GetByRoleOptions,

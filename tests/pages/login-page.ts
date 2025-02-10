@@ -13,10 +13,10 @@ import {
   getLocatorByRole,
   getLocatorByText,
   getLocatorByXPath,
-} from '../../src/tobias-playwright/utils/locator-utils';
-import { click } from '../../src/tobias-playwright/utils/action-utils';
-import { LoginCredentials } from '../testdata/the-internet-test-data';
-import { expectElementToBeVisible } from '../../src/tobias-playwright/utils/assert-utils';
+} from '@LocatorUtils';
+import { click } from '@ActionUtils';
+import { LoginCredentials } from '@TestDataTheInternet';
+import { expectElementToBeVisible } from '@AssertUtils';
 
 const userName = () => getLocator(`#username`).or(getLocatorByPlaceholder('Username', { exact: true }));
 const password = () => getLocator(`#password`).or(getLocatorByPlaceholder('Password', { exact: true }));

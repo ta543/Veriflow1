@@ -2,16 +2,15 @@
  * (C) VeriFlow 2025
  *
  * The purpose of this module is to manage all functions handling test steps
- * on {@code LoginPage}.
+ * on {@code SauceDemoLoginPage}.
  *
- *
- * VeriFlow Test Automation - LoginPage
+ * VeriFlow Test Automation - SauceDemoLoginPage
  */
 
-import { click, clickAndNavigate, fill, gotoURL } from '../../src/tobias-playwright/utils/action-utils';
-import { failureLoginCredentials, successLoginCredentials } from '../testdata/sauce-demo-test-data';
-import { expectElementToBeVisible } from '../../src/tobias-playwright/utils/assert-utils';
-import { getLocator, getLocatorByPlaceholder, getLocatorByRole } from '../../src/tobias-playwright/utils/locator-utils';
+import { click, clickAndNavigate, fill, gotoURL } from '@ActionUtils';
+import { failureLoginCredentials, successLoginCredentials } from '@TestDataSauceDemo';
+import { expectElementToBeVisible } from '@AssertUtils';
+import { getLocator, getLocatorByPlaceholder, getLocatorByRole } from '@LocatorUtils';
 
 const userName = `#user-name`;
 const password = () => getLocator(`#password`).or(getLocatorByPlaceholder('Password', { exact: true }));

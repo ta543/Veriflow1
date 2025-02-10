@@ -2,15 +2,14 @@
  * (C) VeriFlow 2025
  *
  * The purpose of this module is to manage all functions handling test steps
- * on {@code LoginPage}.
+ * on {@code HomePage}.
  *
- *
- * VeriFlow Test Automation - LoginPage
+ * VeriFlow Test Automation - HomePage
  */
 
-import { click, gotoURL } from '../../src/tobias-playwright/utils/action-utils';
-import { expectPageToHaveURL } from '../../src/tobias-playwright/utils/assert-utils';
-import { getLocatorByText } from '../../src/tobias-playwright/utils/locator-utils';
+import { click, gotoURL } from '@ActionUtils';
+import { expectPageToHaveURL } from '@AssertUtils';
+import { getLocatorByText } from '@LocatorUtils';
 
 const dropdownLink = () => getLocatorByText('Dropdown', { exact: true });
 const loginPageLink = () => getLocatorByText('Form Authentication', { exact: true });
