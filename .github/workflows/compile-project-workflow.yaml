@@ -54,11 +54,11 @@ jobs:
         run: |
           if [[ "${{ steps.install_dependencies.outcome }}" == "failure" || "${{ steps.build.outcome }}" == "failure" ]]; then
             echo "result=failure" >> $GITHUB_ENV
-            echo "❌ Compilation failed. Check the logs for more details."
+            echo "❌ Build failed. Check the logs for more details."
             exit 1
           else
             echo "result=success" >> $GITHUB_ENV
-            echo "✅ Compilation succeeded!"
+            echo "✅ Build succeeded!"
           fi      
 
       - name: 'Apply Labels'
