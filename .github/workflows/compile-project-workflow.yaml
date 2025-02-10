@@ -54,10 +54,22 @@ jobs:
         run: |
           if [[ "${{ steps.install_dependencies.outcome }}" == "failure" || "${{ steps.build.outcome }}" == "failure" ]]; then
             echo "result=failure" >> $GITHUB_ENV
+            echo "❌ Compilation failed. Check the logs for more details."
             exit 1
           else
             echo "result=success" >> $GITHUB_ENV
-          fi
+            echo "✅ Compilation succeeded! Great job!"
+          fi      
+
+      # - name: 'Set Compile Result'
+      #   if: always()
+      #   run: |
+      #     if [[ "${{ steps.install_dependencies.outcome }}" == "failure" || "${{ steps.build.outcome }}" == "failure" ]]; then
+      #       echo "result=failure" >> $GITHUB_ENV
+      #       exit 1
+      #     else
+      #       echo "result=success" >> $GITHUB_ENV
+      #     fi
 
       - name: 'Apply Labels'
         if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' && always()
