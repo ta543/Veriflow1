@@ -15,7 +15,7 @@ const customColors = {
   error: 'red',
 };
 winston.addColors(customColors);
-;;;;;;;;;;;;;;;;
+
 /**
  * Logger configuration
  */
