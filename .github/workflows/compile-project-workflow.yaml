@@ -23,7 +23,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: ''
+    name: 'Compile 🛠️'
 
     steps:
       - name: 'Checkout code'
