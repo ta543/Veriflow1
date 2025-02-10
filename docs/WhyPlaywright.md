@@ -101,7 +101,3 @@ Precision-engineered for the modern web, Playwright operates swiftly, even in in
 4. Mobile emulation employs desktop browsers, not actual devices.
 
 For more information on Why Playwright, can be found [here](https://playwright.dev/docs/why-playwright)
-
-### Comparative Analysis Table
-
-![Alt text](image.png)
