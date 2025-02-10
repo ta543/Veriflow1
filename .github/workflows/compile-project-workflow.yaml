@@ -1,4 +1,4 @@
-name: VeriFlow | Compile
+name: Veriflow | Compile
 
 permissions:
   contents: write
@@ -9,7 +9,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: false
 
-run-name: '👷🚧[#${{ github.run_number }}][VeriFlow] PR: "${{ github.event.pull_request.title }}"'
+run-name: '👷🚧[#${{ github.run_number }}][Veriflow] PR: "${{ github.event.pull_request.title }}"'
 
 on:
   pull_request:
@@ -21,9 +21,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
-    name: 'Build and Test 🛠️'
+    name: 'Veriflow | Compile 🛠️'
 
     steps:
       - name: 'Checkout code'
@@ -52,12 +52,17 @@ jobs:
       - name: 'Set Compile Result'
         if: always()
         run: |
+          YELLOW='\033[1;33m'
+          RED='\033[1;31m'
+          RESET='\033[0m'
           if [[ "${{ steps.install_dependencies.outcome }}" == "failure" || "${{ steps.build.outcome }}" == "failure" ]]; then
             echo "result=failure" >> $GITHUB_ENV
+            echo -e "${RED}❌ [FAILED] Check the logs for more details.${RESET}"
             exit 1
           else
             echo "result=success" >> $GITHUB_ENV
-          fi
+            echo -e "${YELLOW}✅ [PASSED]${RESET}"
+          fi      
 
       - name: 'Apply Labels'
         if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' && always()
@@ -116,12 +121,13 @@ jobs:
           script: |
             const url = `${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
             const resultMessage = process.env.result === 'success'
-              ? '✅ Build and tests completed successfully.'
-              : `❌ Build or tests failed. [View Workflow Run](${url})`;
-
+              ? `✅ Build completed successfully.\n\n[View Workflow Run](${url})`
+              : `❌ Build failed, check the logs for more details..\n\n[View Workflow Run](${url})`;
+      
             github.rest.issues.createComment({
               issue_number: context.payload.pull_request.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: resultMessage
             });
+            
