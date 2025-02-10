@@ -8,6 +8,7 @@
  */
 
 import { getLocatorByRole, getLocatorByXPath, getLocatorByText, getLocator, getLocatorByPlaceholder, click } from '../../src/tobias-playwright/utils/locator-utils';
+import { click } from '../../src/tobias-playwright/utils/action-utils';
 import { LoginCredentials } from '../testdata/the-internet-test-data';
 import { expectElementToBeVisible } from '../../src/tobias-playwright/utils/assert-utils';
 
