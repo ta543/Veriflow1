@@ -1,4 +1,4 @@
-name: VeriFlow | Compile
+name: VeriFlow |
 
 permissions:
   contents: write
@@ -21,7 +21,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  Compile:
     runs-on: ubuntu-latest
     name: ''
 
