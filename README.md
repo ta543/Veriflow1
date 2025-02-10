@@ -1,4 +1,10 @@
+![Last Commit](https://img.shields.io/github/last-commit/ta543/Veriflow1) ![Pull Requests](https://img.shields.io/github/issues-pr-raw/ta543/Veriflow1)
+
+<div align="center">
+
 # Veriflow QA Framework
+
+</div>
 
 The **Playwright TypeScript Framework** is a **versatile, scalable, and efficient** automation framework designed to streamline **web (desktop & mobile), API, and Electron testing**. Built on [**Playwright**](https://playwright.dev/) and [**TypeScript**](https://www.typescriptlang.org/), it provides a **robust** and **high-performance** testing environment for QA professionals, developers, and business analysts.
 
