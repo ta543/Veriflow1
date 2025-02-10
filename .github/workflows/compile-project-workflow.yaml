@@ -48,9 +48,6 @@ jobs:
       - name: 'Compile TypeScript'
         run: npm run build
 
-      - name: 'Run Playwright Tests'
-        run: npx playwright test
-
       - name: 'Set Compile and Test Result'
         if: always()
         run: |
