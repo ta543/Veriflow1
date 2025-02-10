@@ -1,4 +1,4 @@
-name: VeriFlow | Compile
+name: VeriFlow | Compile 🛠️
 
 permissions:
   contents: write
@@ -22,8 +22,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    name: 'Compile 🛠️'
+    runs-on: ubuntu-latest'
 
     steps:
       - name: 'Checkout code'
