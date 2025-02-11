@@ -1,10 +1,5 @@
-/**
- * (C) VeriFlow 2025
- *
- * This test suite validates navigation and functionality across multiple pages
- * including Dropdown, Login, Checkbox, and Key Press pages.
- *
- * VeriFlow Test Automation - The Internet Tests
+/** (C) VeriFlow 2025 - Sauce Demo Tests
+ * This test suite validates navigation and functionality on saucedemo.com
  */
 
 import { test } from '@PageSetup';
@@ -16,7 +11,6 @@ test.describe('Saucedemo tests for successful, unsuccessful logins and add produ
   test('Saucedemo tests - Successful login will display Products Page', async () => {
     await LoginPage.navigateToSauceDemoLoginPage();
     await LoginPage.logInSuccessfully();
-    //verifying products page is displayed on successful login
     await ProductsPage.verifyProductsPageDisplayed();
   });
 
@@ -25,7 +19,6 @@ test.describe('Saucedemo tests for successful, unsuccessful logins and add produ
     await LoginPage.logInSuccessfully();
     await ProductsPage.verifyProductsPageDisplayed();
     await ProductsPage.addToCartByProductNumber(1);
-    //verifying mini cart count is updated to 1
     await MiniCart.verifyMiniCartCount('1');
   });
 
@@ -33,11 +26,7 @@ test.describe('Saucedemo tests for successful, unsuccessful logins and add produ
     await LoginPage.navigateToSauceDemoLoginPage();
     await LoginPage.failureLogin();
     await LoginPage.verifyErrorMessageForFailureLogin();
-    //verifying Login is still displayed
     await LoginPage.verifyLoginPageisDisplayed();
-    //verifying Products Page is not displayed
     await ProductsPage.verifyProductsPageNotDisplayed();
   });
 });
-
-// This is the preferred way of writing a test. It is more readable and easier to maintain. It is also easier to write tests in this style.

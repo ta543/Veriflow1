@@ -3,7 +3,7 @@ export const testMetadata = {
     owner: 'Tobias Andersen - [tobias@tobiasa.com]',
     tms: 'TEST-005',
     description: 'Verify that key presses are correctly detected and displayed.',
-    tags: ['Keyboard', 'UI'],
+    tags: ['Keyboard'],
   },
   dropdownTest: {
     owner: 'Tobias Andersen - [tobias@tobiasa.com]',
@@ -27,7 +27,7 @@ export const testMetadata = {
     owner: 'Tobias Andersen - [tobias@tobiasa.com]',
     tms: 'TEST-004',
     description: 'Verify that checkboxes can be toggled on and off correctly.',
-    tags: ['Checkbox', 'UI'],
+    tags: ['Checkbox'],
   },
 };
 

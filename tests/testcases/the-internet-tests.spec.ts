@@ -1,19 +1,14 @@
-/**
- * (C) VeriFlow 2025
- *
- * This test suite validates navigation and functionality across multiple pages
- * including Dropdown, Login, Checkbox, and Key Press pages.
- *
- * VeriFlow Test Automation - The Internet Tests
+/** (C) VeriFlow 2025 - The Internet Tests
+ * This test suite validates navigation and functionality on the-internet.herokuapp.com
  */
 
 import { test } from '@PageSetup';
 import { logTestDetails as logMetadataDetails } from '@TestMetadata';
-import * as HomePage from '@HomePage';
-import * as DropdownPage from '@DropdownPage';
-import * as LoginPage from '@LoginPage';
-import * as CheckboxPage from '@CheckboxPage';
-import * as KeypressPage from '@KeypressPage';
+import * as HomePage from '@TheInternetHomePage';
+import * as DropdownPage from '@TheInternetDropdownPage';
+import * as LoginPage from '@TheInternetLoginPage';
+import * as CheckboxPage from '@TheInternetCheckboxPage';
+import * as KeypressPage from '@TheInternetKeypressPage';
 
 test.describe('The Internet App Tests', () => {
   test('Dropdown test', async () => {

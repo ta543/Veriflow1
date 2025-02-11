@@ -4,12 +4,7 @@
  * See https://playwright.dev/docs/test-configuration for more details.
  */
 
-import {
-  ACTION_TIMEOUT,
-  EXPECT_TIMEOUT,
-  NAVIGATION_TIMEOUT,
-  TEST_TIMEOUT,
-} from './src/tobias-playwright/utils/timeout-constants';
+import { ACTION_TIMEOUT, EXPECT_TIMEOUT, NAVIGATION_TIMEOUT, TEST_TIMEOUT } from '@TimeoutConstants';
 import { WaitForLoadStateOptions } from 'setup/optional-parameter-types';
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
@@ -118,7 +113,7 @@ export default defineConfig({
       },
     },
 
-/* 
+    /*
     {
       name: 'firefox',
       use: {
@@ -161,7 +156,6 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     },
  */
-
   ],
 
   /**
