@@ -38,7 +38,7 @@ test.describe('Automation Exercise App Tests', () => {
     await HomePage.navigateToHomePage();
     await ContactUsPage.navigateToContactUsPage();
     await ContactUsPage.verifyContactUsPageURL();
-    await ContactUsPage.fillContactForm(ContactFormData.validSubmission);
+    await ContactUsPage.fillContactForm();
     await ContactUsPage.submitContactForm();
     await ContactUsPage.returnToHomePage();
   });
