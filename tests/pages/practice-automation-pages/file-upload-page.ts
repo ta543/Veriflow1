@@ -4,7 +4,7 @@
  */
 
 import { click, uploadFiles } from '@ActionUtils';
-import { expectPageToHaveURL, expectElementToHaveText } from '@AssertUtils';
+import { expectPageToHaveURL, expectElementToHaveText, expectElementToBeVisible } from '@AssertUtils';
 import { getLocatorByRole, getLocator } from '@LocatorUtils';
 
 // Locators

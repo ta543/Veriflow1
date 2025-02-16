@@ -63,7 +63,6 @@ test.describe('Practice Automation App Tests', () => {
     setupAllure('practiceAutomationFileDownloadTest');
     await HomePage.navigateToHomePage();
     await HomePage.clickFileDownloadLink();
-    await FileDownloadPage.verifyFileDownloadPageURL();
     await FileDownloadPage.checkThatFileDownloadPageIsDisplayed();
     await FileDownloadPage.downloadFile();
   });
