@@ -4,22 +4,20 @@
  * The purpose of this module is to manage all functions handling test steps
  * on {@code LoginPage}.
  *
- * VeriFlow Test Automation - LoginPage
+ * VeriFlow Test Automation - The Internet | LoginPage
  */
 
 import {
-  getLocator,
-  getLocatorByPlaceholder,
   getLocatorByRole,
   getLocatorByText,
   getLocatorByXPath,
 } from '@LocatorUtils';
 import { click } from '@ActionUtils';
-import { LoginCredentials } from '@TestDataTheInternet';
+import { FormFieldsCredentials } from '@TestDataTheInternet';
 import { expectElementToBeVisible } from '@AssertUtils';
 
-const userName = () => getLocator(`#username`).or(getLocatorByPlaceholder('Username', { exact: true }));
-const password = () => getLocator(`#password`).or(getLocatorByPlaceholder('Password', { exact: true }));
+const usernameInput = () => getLocatorByRole('textbox', { name: 'Username' });
+const passwordInput = () => getLocatorByRole('textbox', { name: 'Password' });
 const loginButton = () => getLocatorByRole('button', { name: 'Login' });
 const errorMessage = `//*[contains(@class,'error-message')]`;
 const successMessage = () => getLocatorByText('You logged into a secure area!');
@@ -28,8 +26,8 @@ const logoutMessage = () => getLocatorByXPath('//div[@id="flash"]');
 const loginPageHeader = () => getLocatorByXPath("//h2[normalize-space()='Login Page']");
 
 export async function loginSuccessfully() {
-  await userName().fill(LoginCredentials.username);
-  await password().fill(LoginCredentials.password);
+  await usernameInput().fill(FormFieldsCredentials.username);
+  await passwordInput().fill(FormFieldsCredentials.password);
   await loginButton().click();
 }
 

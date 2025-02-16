@@ -1,9 +1,10 @@
-/** (C) VeriFlow 2025 - The Internet Tests
+/**
+ * (C) VeriFlow 2025 - The Internet Tests
  * This test suite validates navigation and functionality on the-internet.herokuapp.com
  */
 
 import { test } from '@PageSetup';
-import { logTestDetails as logMetadataDetails } from '@TestMetadata';
+import { setupAllure } from '@AllureMetaData';
 import * as HomePage from '@TheInternetHomePage';
 import * as DropdownPage from '@TheInternetDropdownPage';
 import * as LoginPage from '@TheInternetLoginPage';
@@ -12,7 +13,7 @@ import * as KeypressPage from '@TheInternetKeypressPage';
 
 test.describe('The Internet App Tests', () => {
   test('Dropdown test', async () => {
-    logMetadataDetails('dropdownTest');
+    setupAllure('dropdownTest');
     await HomePage.navigateToHomePage();
     await HomePage.clickDropdownLink();
     await DropdownPage.navigateToDropdownPage();
@@ -26,7 +27,7 @@ test.describe('The Internet App Tests', () => {
   });
 
   test('Login test - successful login', async () => {
-    logMetadataDetails('loginTest');
+    setupAllure('loginTest');
     await HomePage.navigateToHomePage();
     await HomePage.clickLoginPageLink();
     await LoginPage.verifyLoginPageIsDisplayed();
@@ -39,7 +40,7 @@ test.describe('The Internet App Tests', () => {
   });
 
   test('Logout test - successful logout', async () => {
-    logMetadataDetails('logoutTest');
+    setupAllure('logoutTest');
     await HomePage.navigateToHomePage();
     await HomePage.clickLoginPageLink();
     await LoginPage.loginSuccessfully();
@@ -53,7 +54,7 @@ test.describe('The Internet App Tests', () => {
   });
 
   test('Checkbox test', async () => {
-    logMetadataDetails('checkboxTest');
+    setupAllure('checkboxTest');
     await HomePage.navigateToHomePage();
     await HomePage.clickCheckboxesPageLink();
 
@@ -72,7 +73,7 @@ test.describe('The Internet App Tests', () => {
   });
 
   test('Key presses test', async () => {
-    logMetadataDetails('keyPressTest');
+    setupAllure('keyPressTest');
     await HomePage.navigateToHomePage();
     await HomePage.clickKeyPressesPageLink();
     await KeypressPage.clickOnTargetElement();

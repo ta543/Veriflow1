@@ -28,14 +28,31 @@
       "@LocatorUtils": ["./utils/locator-utils"],
       // Test Data
       "@TestMetadata": ["./utils/test-metadata"],
+      "@AllureMetaData": ["./utils/setupAllure"],
+      "@MyReporter": ["./utils/MyReporter"],
       "@TestDataSauceDemo": ["../../tests/testdata/sauce-demo-test-data"],
       "@TestDataTheInternet": ["../../tests/testdata/the-internet-test-data"],
+      "@TestDataAutomationExercise": ["../../tests/testdata/automation-exercise-testdata"],
+      "@TestDataPractiseAutomationFormFields": ["../../tests/testdata/practise-automation-form-fields-test-data"],
       // Pages - The Internet
       "@TheInternetHomePage": ["../../tests/pages/the-internet-pages/home-page"],
       "@TheInternetLoginPage": ["../../tests/pages/the-internet-pages/login-page"],
       "@TheInternetDropdownPage": ["../../tests/pages/the-internet-pages/dropdown-page"],
       "@TheInternetCheckboxPage": ["../../tests/pages/the-internet-pages/checkbox-page"],
       "@TheInternetKeypressPage": ["../../tests/pages/the-internet-pages/keypress-page"],
+      // Pages - Practice Automation
+      "@PracticeAutomationHomePage": ["../../tests/pages/practice-automation-pages/home-page"],
+      "@PracticeAutomationBrokenLinksPage": ["../../tests/pages/practice-automation-pages/broken-links-page"],
+      "@PracticeAutomationFileDownloadPage": ["../../tests/pages/practice-automation-pages/file-download-page"],
+      "@PracticeAutomationFileUploadPage": ["../../tests/pages/practice-automation-pages/file-upload-page"],
+      "@PracticeAutomationFormFieldsPage": ["../../tests/pages/practice-automation-pages/form-fields-page"],
+      "@PracticeAutomationPopUpsPage": ["../../tests/pages/practice-automation-pages/popups-page"],
+      // Pages - Automation Exercise
+      "@AutomationExerciseHomePage": ["../../tests/pages/automation-exercise-pages/home-page"],
+      "@AutomationExerciseCartPage": ["../../tests/pages/automation-exercise-pages/cart-page"],
+      "@AutomationExerciseContactUsPage": ["../../tests/pages/automation-exercise-pages/contact-us-page"],
+      "@AutomationExerciseLoginPage": ["../../tests/pages/automation-exercise-pages/login-page"],
+      "@AutomationExerciseProductsPage": ["../../tests/pages/automation-exercise-pages/products-page"],
       // Pages - Sauce Demo
       "@SauceDemoLoginPage": ["../../tests/pages/sauce-demo-pages/sauce-demo-login-page"],
       "@SauceDemoMiniCartPage": ["../../tests/pages/sauce-demo-pages/sauce-demo-mini-cart"],

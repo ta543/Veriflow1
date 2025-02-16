@@ -1,0 +1,109 @@
+name: VeriFlow | Run Regression Tests [Single Thread]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+run-name: '👷🚧[#${{ github.run_number }}][${{ github.event.inputs.testConfig }} Tests] 🌍Env: ${{ github.event.inputs.appEnvironment }} | 🏷️Release: ${{ github.event.inputs.appRelease }} | 📱Device: ${{ github.event.inputs.deviceConfig }}'
+
+on:
+  workflow_dispatch:
+    inputs:
+      appModule:
+        description: 'Select the VeriFlow application module:'
+        required: true
+        type: choice
+        options:
+          - 'VeriFlow_EU'
+          - 'VeriFlow_NA'
+          - 'VeriFlow_ASIA'
+      appEnvironment:
+        description: 'Select the VeriFlow application environment:'
+        required: true
+        type: choice
+        options:
+          - 'UAT'
+          - 'QA'
+          - 'DEV'
+      appRelease:
+        description: 'Enter the VeriFlow application release:'
+        required: true
+        default: 'latest'
+        type: string
+      deviceConfig:
+        description: 'Select the device config:'
+        required: true
+        type: choice
+        options:
+          - 'GooglePixel4XL'
+          - 'GalaxyS23Ultra'
+          - 'GalaxyS22'
+          - 'GalaxyS20'
+          - 'GalaxyS20FE'
+          - 'GalaxyS22Ultra'
+          - 'iPhone14Pro'
+          - 'iPhone15ProMax'
+          - 'iPhone13'
+          - 'iPhone14'
+          - 'iPhone15'
+      devicePlatform:
+        description: 'Select the device platform:'
+        required: true
+        type: choice
+        options:
+          - 'android'
+          - 'ios'
+      enableTestRetry:
+        description: 'Enable retry for failing tests?'
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: '️Build & Execute Tests🛠️'
+    env:
+      BUILD_NUMBER: ${{ github.run_number }}
+      CICD: true
+
+    steps:
+      - name: 'Checkout Code'
+        uses: actions/checkout@v4
+
+      - name: 'Set up Elixir'
+        uses: actions/setup-elixir@v2
+        with:
+          elixir-version: '1.14'
+          otp-version: '25.0'
+
+      - name: 'Install Dependencies'
+        run: mix deps.get
+
+      - name: '🚨 Run ${{ github.event.inputs.appModule }} Tests 🚨'
+        run: |
+          MIX_COMMAND="mix test --trace \
+          --module=${{ github.event.inputs.appModule }} \
+          --env=${{ github.event.inputs.appEnvironment }} \
+          --release=${{ github.event.inputs.appRelease }} \
+          --deviceConfig=${{ github.event.inputs.deviceConfig }} \
+          --devicePlatform=${{ github.event.inputs.devicePlatform }} \
+          --retry=${{ github.event.inputs.enableTestRetry }}"
+
+          echo "Executing: $MIX_COMMAND"
+          eval $MIX_COMMAND
+        shell: bash
+
+      - name: 'Upload Test Results'
+        uses: actions/upload-artifact@v4
+        with:
+          name: 'test-results'
+          path: test-results/
+          retention-days: 7
+
+      - name: 'Upload Allure Report Results'
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results/
+          retention-days: 7

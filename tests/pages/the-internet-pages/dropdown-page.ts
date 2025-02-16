@@ -5,7 +5,7 @@
  * on {@code DropdownPage}.
  *
  *
- * VeriFlow Test Automation - DropdownPage
+ * VeriFlow Test Automation - The Internet | DropdownPage
  */
 
 import { gotoURL, selectByIndex } from '@ActionUtils';

@@ -4,37 +4,220 @@ export const testMetadata = {
     tms: 'TEST-005',
     description: 'Verify that key presses are correctly detected and displayed.',
     tags: ['Keyboard'],
+    severity: 'NORMAL',
+    suite: 'UI Tests',
+    feature: 'Keyboard Interaction',
+    story: 'User can press and detect keys',
   },
   dropdownTest: {
     owner: 'Tobias Andersen - [tobias@tobiasa.com]',
     tms: 'TEST-001',
     description: 'Verify that selecting an option in the dropdown properly updates the selected attribute.',
     tags: ['Dropdown'],
+    severity: 'NORMAL',
+    suite: 'UI Tests',
+    feature: 'Dropdown Functionality',
+    story: 'User selects a dropdown option',
   },
   loginTest: {
     owner: 'Tobias Andersen - [tobias@tobiasa.com]',
     tms: 'TEST-002',
     description: 'Validate that a user can successfully log in with valid credentials.',
     tags: ['Login', 'Auth'],
+    severity: 'NORMAL',
+    suite: 'Authentication Tests',
+    feature: 'Login Flow',
+    story: 'User logs in with valid credentials',
   },
   logoutTest: {
     owner: 'Tobias Andersen - [tobias@tobiasa.com]',
     tms: 'TEST-003',
     description: 'Validate that a user can successfully log out after logging in.',
     tags: ['Logout', 'Auth'],
+    severity: 'NORMAL',
+    suite: 'Authentication Tests',
+    feature: 'Logout Flow',
+    story: 'User logs out successfully',
   },
   checkboxTest: {
     owner: 'Tobias Andersen - [tobias@tobiasa.com]',
     tms: 'TEST-004',
     description: 'Verify that checkboxes can be toggled on and off correctly.',
     tags: ['Checkbox'],
+    severity: 'NORMAL',
+    suite: 'UI Tests',
+    feature: 'Checkboxes',
+    story: 'User interacts with checkboxes',
   },
-};
+  sauceDemoLoginTest: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'SAUCE-001',
+    description: 'Validate that a user can successfully log in with valid credentials on SauceDemo.',
+    tags: ['SauceDemo', 'Login', 'Authentication'],
+    severity: 'NORMAL',
+    suite: 'SauceDemo Tests',
+    feature: 'User Authentication',
+    story: 'User logs in successfully',
+  },
+  sauceDemoAddToCartTest: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'SAUCE-002',
+    description: 'Verify that users can add a product to the cart on SauceDemo.',
+    tags: ['SauceDemo', 'Cart', 'E-commerce'],
+    severity: 'NORMAL',
+    suite: 'SauceDemo Tests',
+    feature: 'Shopping Cart',
+    story: 'User adds a product to the cart',
+  },
+  sauceDemoFailedLoginTest: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'SAUCE-003',
+    description: 'Validate that a failed login attempt does not display the Products page.',
+    tags: ['SauceDemo', 'Login', 'Negative Testing'],
+    severity: 'NORMAL',
+    suite: 'SauceDemo Tests',
+    feature: 'User Authentication',
+    story: 'User enters incorrect credentials and fails to log in',
+  },
+  automationExerciseTestCasesNavigationTest: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'AE-001',
+    description: 'Verify that the Test Cases page is accessible from the homepage.',
+    tags: ['AutomationExercise', 'Navigation', 'Test Cases'],
+    severity: 'NORMAL',
+    suite: 'Automation Exercise - Navigation',
+    feature: 'Test Cases Page Navigation',
+    story: 'User accesses the Test Cases page from the homepage',
+  },
+  automationExerciseSearchProductTest: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'AE-002',
+    description: 'Validate that users can search for a product and see relevant results.',
+    tags: ['AutomationExercise', 'Search', 'Products'],
+    severity: 'NORMAL',
+    suite: 'Automation Exercise - Products',
+    feature: 'Product Search',
+    story: 'User searches for a product using the search bar',
+  },
+  automationExerciseAddToCartTest: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'AE-003',
+    description: 'Ensure that a product can be added to the cart and verified.',
+    tags: ['AutomationExercise', 'Cart', 'Products'],
+    severity: 'NORMAL',
+    suite: 'Automation Exercise - Cart',
+    feature: 'Add to Cart',
+    story: 'User adds a product to the cart and verifies its presence',
+  },
+  automationExerciseLoginTest: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'AE-004',
+    description: 'Validate that a user can successfully log in with valid credentials.',
+    tags: ['AutomationExercise', 'Login', 'Authentication'],
+    severity: 'NORMAL',
+    suite: 'Automation Exercise - Authentication',
+    feature: 'User Login',
+    story: 'User logs in with valid credentials and accesses account dashboard',
+  },
+  automationExerciseLogoutTest: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'AE-005',
+    description: 'Validate that a user can successfully log out after logging in.',
+    tags: ['AutomationExercise', 'Logout', 'Authentication'],
+    severity: 'NORMAL',
+    suite: 'Automation Exercise - Authentication',
+    feature: 'User Logout',
+    story: 'User logs out successfully and is redirected to login page',
+  },
+  automationExerciseContactUsTest: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'AE-006',
+    description: 'Verify that users can submit a contact form successfully.',
+    tags: ['AutomationExercise', 'Contact Us', 'Forms'],
+    severity: 'NORMAL',
+    suite: 'Automation Exercise - Forms',
+    feature: 'Contact Us Form',
+    story: 'User fills and submits the contact form successfully',
+  },
+  practiceAutomationFormFieldsNavigationTest: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'PA-001',
+    description: 'Verify that users can navigate to the Form Fields page from the homepage.',
+    tags: ['PracticeAutomation', 'Navigation', 'Form Fields'],
+    severity: 'NORMAL',
+    suite: 'Practice Automation - Navigation',
+    feature: 'Form Fields Navigation',
+    story: 'User navigates to the Form Fields page',
+  },
+  practiceAutomationFormSubmissionTest: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'PA-002',
+    description: 'Validate that a user can successfully fill out and submit the form.',
+    tags: ['PracticeAutomation', 'Forms', 'Submission'],
+    severity: 'NORMAL',
+    suite: 'Practice Automation - Forms',
+    feature: 'Form Submission',
+    story: 'User fills out and submits a form successfully',
+  },
+  practiceAutomationPopupsTest: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'PA-003',
+    description: 'Verify that popups can be opened and closed correctly.',
+    tags: ['PracticeAutomation', 'Popups', 'UI'],
+    severity: 'NORMAL',
+    suite: 'Practice Automation - UI',
+    feature: 'Popup Handling',
+    story: 'User interacts with popups and closes them successfully',
+  },
+  practiceAutomationFileUploadTest: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'PA-004',
+    description: 'Ensure that users can successfully upload a file.',
+    tags: ['PracticeAutomation', 'File Upload', 'UI'],
+    severity: 'NORMAL',
+    suite: 'Practice Automation - File Handling',
+    feature: 'File Upload',
+    story: 'User uploads a file and verifies success message',
+  },
+  practiceAutomationFileDownloadTest: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'PA-005',
+    description: 'Verify that users can download a file successfully.',
+    tags: ['PracticeAutomation', 'File Download', 'UI'],
+    severity: 'NORMAL',
+    suite: 'Practice Automation - File Handling',
+    feature: 'File Download',
+    story: 'User downloads a file from the File Download page',
+  },
+  practiceAutomationBrokenLinksTest: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'PA-006',
+    description: 'Check if any broken links exist on the page.',
+    tags: ['PracticeAutomation', 'Broken Links', 'Validation'],
+    severity: 'NORMAL',
+    suite: 'Practice Automation - Validation',
+    feature: 'Broken Links Verification',
+    story: 'User checks for broken links and verifies their status',
+  },
 
-export function logTestDetails(testId: keyof typeof testMetadata) {
-  const details = testMetadata[testId];
-  console.log(`Owner: ${details.owner}`);
-  console.log(`TMS Link: ${details.tms}`);
-  console.log(`Description: ${details.description}`);
-  console.log(`Tags: ${details.tags.join(', ')}`);
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+};

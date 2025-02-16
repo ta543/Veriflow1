@@ -4,7 +4,7 @@
  * The purpose of this module is to manage all functions handling test steps
  * on {@code SauceDemoProductsPage}.
  *
- * VeriFlow Test Automation - SauceDemoProductsPage
+ * VeriFlow Test Automation - Sauce Demo | SauceDemoProductsPage
  */
 
 import { click } from '@ActionUtils';

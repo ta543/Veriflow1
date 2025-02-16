@@ -5,7 +5,7 @@
  * on {@code CheckboxPage}.
  *
  *
- * VeriFlow Test Automation - CheckboxPage
+ * VeriFlow Test Automation - The Internet | CheckboxPage
  */
 
 import { click } from '@ActionUtils';

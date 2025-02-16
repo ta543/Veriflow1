@@ -4,9 +4,7 @@
  * The purpose of this class is to manage all methods that will handle the execution of test steps
  * on {@code KeyPressPage}.
  *
- * This file follows a structured Page Object Model (POM) to ensure maintainability and reusability.
- *
- * VeriFlow Test Automation - KeyPressPage
+ * VeriFlow Test Automation - The Internet | KeyPressPage
  */
 
 import { getLocatorByCSS, getLocatorByXPath } from '@LocatorUtils';

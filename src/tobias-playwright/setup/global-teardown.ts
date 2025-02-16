@@ -9,7 +9,11 @@
 
 import { execSync } from 'child_process';
 
-export default function globalTeardown() {
-  console.log('Global teardown is running...');
-  execSync('./generate-allure-report.sh', { stdio: 'inherit' });
+async function globalTeardown() {
+  console.log("📊 Generating Allure report...");
+  execSync("bash generate-allure-report.sh", { stdio: "inherit" });
+
+  console.log("✅ Allure report generated successfully.");
 }
+
+export default globalTeardown;

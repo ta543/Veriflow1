@@ -4,7 +4,7 @@
  * The purpose of this module is to manage all functions handling test steps
  * on {@code SauceDemoMiniCartPage}.
  *
- * VeriFlow Test Automation - SauceDemoMiniCartPage
+ * VeriFlow Test Automation - Sauce Demo | SauceDemoMiniCartPage
  */
 
 import { expectElementToHaveText } from '@AssertUtils';

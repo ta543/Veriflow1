@@ -6,6 +6,7 @@
 
 import { ACTION_TIMEOUT, EXPECT_TIMEOUT, NAVIGATION_TIMEOUT, TEST_TIMEOUT } from '@TimeoutConstants';
 import { WaitForLoadStateOptions } from 'setup/optional-parameter-types';
+
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 dotenv.config({ path: '.env' });
@@ -52,11 +53,13 @@ export default defineConfig({
    */
 
   reporter: [
-    ['./src/tobias-playwright/setup/custom-logger.ts'],
-    ['allure-playwright'],
-    ['html', { open: 'never' }],
-    ['dot'],
+    ['allure-playwright', { outputFolder: 'allure/allure-results' }],
+    ['junit', { outputFile: 'test-results.xml' }],
+    ['./src/tobias-playwright/utils/MyReporter'],
+    ['json', { outputFile: 'allure/allure-results/test-results.json' }],
+    ['html', { outputFolder: 'allure/allure-report', open: 'never' }],
   ],
+  quiet: true,
 
   /**
    * Shared settings for all the projects below.
@@ -92,6 +95,7 @@ export default defineConfig({
     actionTimeout: ACTION_TIMEOUT,
     /* Sets a timeout for page loading navigations like goto URL, go back, reload, waitForNavigation to prevent long page loads. */
     navigationTimeout: NAVIGATION_TIMEOUT,
+    outputDir: "allure/allure-results"
   },
 
   /**
@@ -112,8 +116,8 @@ export default defineConfig({
         },
       },
     },
-
     /*
+
     {
       name: 'firefox',
       use: {

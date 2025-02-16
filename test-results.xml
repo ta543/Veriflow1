@@ -1,0 +1,31 @@
+<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="48.299819">
+<testsuite name="automation-exercise-tests.spec.ts" timestamp="2025-02-15T23:51:04.457Z" hostname="Chrome" tests="3" failures="0" skipped="0" time="14.76" errors="0">
+<testcase name="Automation Exercise App Tests › Search product test" classname="automation-exercise-tests.spec.ts" time="5.024">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/automation-exercise-tests--64917-p-Tests-Search-product-test-Chrome/test-finished-1.png]]
+
+[[ATTACHMENT|test-results/automation-exercise-tests--64917-p-Tests-Search-product-test-Chrome/video.webm]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Automation Exercise App Tests › Add product to cart test" classname="automation-exercise-tests.spec.ts" time="6.057">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/automation-exercise-tests--07281-ts-Add-product-to-cart-test-Chrome/test-finished-1.png]]
+
+[[ATTACHMENT|test-results/automation-exercise-tests--07281-ts-Add-product-to-cart-test-Chrome/video.webm]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Automation Exercise App Tests › Contact Us form test" classname="automation-exercise-tests.spec.ts" time="3.679">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/automation-exercise-tests--fd5bf--Tests-Contact-Us-form-test-Chrome/test-finished-1.png]]
+
+[[ATTACHMENT|test-results/automation-exercise-tests--fd5bf--Tests-Contact-Us-form-test-Chrome/video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

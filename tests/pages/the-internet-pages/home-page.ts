@@ -4,12 +4,14 @@
  * The purpose of this module is to manage all functions handling test steps
  * on {@code HomePage}.
  *
- * VeriFlow Test Automation - HomePage
+ * VeriFlow Test Automation - The Internet | HomePage
  */
 
 import { click, gotoURL } from '@ActionUtils';
 import { expectPageToHaveURL } from '@AssertUtils';
 import { getLocatorByText } from '@LocatorUtils';
+
+const homePageURL = 'https://the-internet.herokuapp.com/';
 
 const dropdownLink = () => getLocatorByText('Dropdown', { exact: true });
 const loginPageLink = () => getLocatorByText('Form Authentication', { exact: true });
@@ -17,7 +19,7 @@ const checkboxesPageLink = () => getLocatorByText('Checkboxes', { exact: true })
 const keyPressesPageLink = () => getLocatorByText('Key Presses', { exact: true });
 
 export async function navigateToHomePage() {
-  await gotoURL('https://the-internet.herokuapp.com/');
+  await gotoURL(homePageURL);
 }
 
 export async function verifyHomePageURL() {

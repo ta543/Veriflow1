@@ -8,6 +8,17 @@
 
 Veriflow is a **Playwright TypeScript Framework** that is **versatile, scalable, and efficient** for automation testing designed to streamline **web (desktop & mobile), API, and Electron testing**. Built on [**Playwright**](https://playwright.dev/) and [**TypeScript**](https://www.typescriptlang.org/), it provides a **robust** and **high-performance** testing environment for QA professionals, developers, and business analysts.
 
+# 📌 Websites Tested On
+
+Below are the websites used for testing:
+
+1. 🔹 **[Automation Exercise - Signup Page](https://www.automationexercise.com/signup)**
+2. 🔹 **[SauceDemo - Login & E-commerce](https://www.saucedemo.com/)**
+3. 🔹 **[The Internet - UI Testing Playground](https://the-internet.herokuapp.com/)**
+4. 🔹 **[Practice Automation - Test Scenarios](https://practice-automation.com/)**
+
+---
+
 ## Key Features:
 
 - **Unique Page Object Model Design Pattern**: Our Page Object Model (POM) design stands apart from traditional POMs. It's a unique approach that significantly reduces complexity and accelerates coding, making it easier and faster to write scripts compared to traditional POMs. This means less time spent on setup and more time spent on creating effective tests. [Discover how our approach differs with the traditional POM](docs/POMComparision.md).
