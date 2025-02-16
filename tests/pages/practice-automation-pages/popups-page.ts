@@ -15,16 +15,11 @@ const promptPopupButton = () => getLocatorByRole('button', { name: 'Prompt Popup
 const okConfirmText = () => getLocatorByText('OK it is!');
 const tooltipTrigger = () => getLocatorByText('<< click me to see a tooltip');
 const tooltipText = () => getLocatorByText('Cool text');
+const getPromptConfirmText = (inputText: string) => getLocatorByText(`Nice to meet you, ${inputText}!`);
 
 // Methods
-const getPromptConfirmText = (inputText) => getLocatorByText(`Nice to meet you, ${inputText}!`);
-
 export async function navigateToPopupsPage() {
-  await click(popupsHeading()); // Ensures the page is interactable
-  await expectPageToHaveURL(/.*popups/);
-}
-
-export async function verifyPopupsPageURL() {
+  await click(popupsHeading());
   await expectPageToHaveURL(/.*popups/);
 }
 
