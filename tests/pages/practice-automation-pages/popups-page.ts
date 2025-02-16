@@ -23,7 +23,7 @@ export async function navigateToPopupsPage() {
   await expectPageToHaveURL(/.*popups/);
 }
 
-export async function verifyPopupsPageDisplayed() {
+export async function popupsPageIsDisplayed() {
   await expectElementToBeVisible(popupsHeading());
 }
 

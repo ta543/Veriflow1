@@ -36,7 +36,7 @@ test.describe('Practice Automation App Tests', () => {
     setupAllure('practiceAutomationPopupsTest');
     await HomePage.navigateToHomePage();
     await HomePage.clickPopupsLink();
-    await PopupsPage.verifyPopupsPageURL();
+    await PopupsPage.popupsPageIsDisplayed();
     await PopupsPage.clickAlertPopupButton();
     await PopupsPage.dismissAlertPopup();
     await PopupsPage.clickConfirmPopupButton();
