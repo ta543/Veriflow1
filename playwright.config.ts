@@ -25,6 +25,7 @@ export default defineConfig({
    * See https://playwright.dev/docs/api/class-testconfig#testconfig-testdir
    */
   testDir: './tests/testcases',
+  outputDir: "allure/allure-results",
   // testMatch: ['**/*.spec.ts', '**/*.test.ts'],
   /**
    * Determines whether to run tests within each spec file in parallel, in addition to running the spec files themselves in parallel.
@@ -95,7 +96,6 @@ export default defineConfig({
     actionTimeout: ACTION_TIMEOUT,
     /* Sets a timeout for page loading navigations like goto URL, go back, reload, waitForNavigation to prevent long page loads. */
     navigationTimeout: NAVIGATION_TIMEOUT,
-    outputDir: "allure/allure-results"
   },
 
   /**

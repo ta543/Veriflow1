@@ -6,7 +6,7 @@ export default class MyReporter implements Reporter {
     private testCount = 0;
     private totalTests = 0;
 
-    onBegin(config: FullConfig, suite: Suite): void {
+    onBegin(_config: FullConfig, suite: Suite): void {
         console.clear();
         console.log(chalk.magenta("\n=== Test Suite Started ==="));
 
