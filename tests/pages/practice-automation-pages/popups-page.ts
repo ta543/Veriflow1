@@ -6,8 +6,6 @@
 import { click, acceptAlert, dismissAlert } from '@ActionUtils';
 import { expectPageToHaveURL, expectElementToBeVisible } from '@AssertUtils';
 import { getLocatorByRole, getLocatorByText } from '@LocatorUtils';
-import { getText } from '@ElementUtils';
-
 
 // Locators
 const popupsHeading = () => getLocatorByRole('heading', { name: 'Popups' });
