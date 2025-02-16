@@ -1,55 +1,28 @@
-<testsuites id="" name="" tests="17" failures="1" skipped="2" errors="0" time="25.796293">
-<testsuite name="automation-exercise-tests.spec.ts" timestamp="2025-02-16T02:32:27.623Z" hostname="Chrome" tests="3" failures="0" skipped="0" time="14.09" errors="0">
-<testcase name="Automation Exercise App Tests › Search product test" classname="automation-exercise-tests.spec.ts" time="3.576">
-<system-err>
+<testsuites id="" name="" tests="6" failures="1" skipped="1" errors="0" time="12.006807">
+<testsuite name="practise-automation-tests.spec.ts" timestamp="2025-02-16T03:07:50.176Z" hostname="Chrome" tests="6" failures="1" skipped="1" time="9.86" errors="0">
+<testcase name="Practice Automation App Tests › Navigate to Form Fields page" classname="practise-automation-tests.spec.ts" time="1.283">
+<system-out>
 <![CDATA[
-Warning: attachment allure/allure-results/automation-exercise-tests--64917-p-Tests-Search-product-test-Chrome/test-finished-1.png is missing
-Warning: attachment allure/allure-results/automation-exercise-tests--64917-p-Tests-Search-product-test-Chrome/video.webm is missing]]>
-</system-err>
+[[ATTACHMENT|allure/allure-results/practise-automation-tests--53aa9-avigate-to-Form-Fields-page-Chrome/test-finished-1.png]]
+
+[[ATTACHMENT|allure/allure-results/practise-automation-tests--53aa9-avigate-to-Form-Fields-page-Chrome/video.webm]]
+]]>
+</system-out>
 </testcase>
-<testcase name="Automation Exercise App Tests › Add product to cart test" classname="automation-exercise-tests.spec.ts" time="6.45">
-<system-err>
+<testcase name="Practice Automation App Tests › Fill and submit form test" classname="practise-automation-tests.spec.ts" time="0.887">
+<system-out>
 <![CDATA[
-Warning: attachment allure/allure-results/automation-exercise-tests--07281-ts-Add-product-to-cart-test-Chrome/test-finished-1.png is missing
-Warning: attachment allure/allure-results/automation-exercise-tests--07281-ts-Add-product-to-cart-test-Chrome/video.webm is missing]]>
-</system-err>
+[[ATTACHMENT|allure/allure-results/practise-automation-tests--90a82-s-Fill-and-submit-form-test-Chrome/test-finished-1.png]]
+
+[[ATTACHMENT|allure/allure-results/practise-automation-tests--90a82-s-Fill-and-submit-form-test-Chrome/video.webm]]
+]]>
+</system-out>
 </testcase>
-<testcase name="Automation Exercise App Tests › Contact Us form test" classname="automation-exercise-tests.spec.ts" time="4.064">
-<system-err>
-<![CDATA[
-Warning: attachment allure/allure-results/automation-exercise-tests--fd5bf--Tests-Contact-Us-form-test-Chrome/test-finished-1.png is missing
-Warning: attachment allure/allure-results/automation-exercise-tests--fd5bf--Tests-Contact-Us-form-test-Chrome/video.webm is missing]]>
-</system-err>
-</testcase>
-</testsuite>
-<testsuite name="practise-automation-tests.spec.ts" timestamp="2025-02-16T02:32:27.623Z" hostname="Chrome" tests="6" failures="1" skipped="2" time="12.521" errors="0">
-<testcase name="Practice Automation App Tests › Navigate to Form Fields page" classname="practise-automation-tests.spec.ts" time="1.508">
-<system-err>
-<![CDATA[
-Warning: attachment allure/allure-results/practise-automation-tests--53aa9-avigate-to-Form-Fields-page-Chrome/test-finished-1.png is missing
-Warning: attachment allure/allure-results/practise-automation-tests--53aa9-avigate-to-Form-Fields-page-Chrome/video.webm is missing]]>
-</system-err>
-</testcase>
-<testcase name="Practice Automation App Tests › Fill and submit form test" classname="practise-automation-tests.spec.ts" time="1.356">
-<system-err>
-<![CDATA[
-Warning: attachment allure/allure-results/practise-automation-tests--90a82-s-Fill-and-submit-form-test-Chrome/test-finished-1.png is missing
-Warning: attachment allure/allure-results/practise-automation-tests--90a82-s-Fill-and-submit-form-test-Chrome/video.webm is missing]]>
-</system-err>
-</testcase>
-<testcase name="Practice Automation App Tests › Handle popups test" classname="practise-automation-tests.spec.ts" time="6.941">
+<testcase name="Practice Automation App Tests › Handle popups test" classname="practise-automation-tests.spec.ts" time="0.669">
 <failure message="practise-automation-tests.spec.ts:35:7 Handle popups test" type="FAILURE">
 <![CDATA[  [Chrome] › practise-automation-tests.spec.ts:35:7 › Practice Automation App Tests › Handle popups test 
 
-    Error: Timed out 5000ms waiting for expect(locator).toBeVisible()
-
-    Locator: getByText('Nice to meet you, JohnDoe!')
-    Expected: visible
-    Received: <element(s) not found>
-    Call log:
-      - expect.toBeVisible with timeout 5000ms
-      - waiting for getByText('Nice to meet you, JohnDoe!')
-
+    Error: toBeVisible can be only used with Locator object
 
        at ../../src/tobias-playwright/utils/assert-utils.ts:64
 
@@ -61,8 +34,8 @@ Warning: attachment allure/allure-results/practise-automation-tests--90a82-s-Fil
       66 |
       67 | /**
         at expectElementToBeVisible (/Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/src/tobias-playwright/utils/assert-utils.ts:64:34)
-        at Object.verifyPromptPopupText (/Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/tests/pages/practice-automation-pages/popups-page.ts:60:33)
-        at /Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/tests/testcases/practise-automation-tests.spec.ts:47:22
+        at Object.verifyPromptPopupText (/Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/tests/pages/practice-automation-pages/popups-page.ts:58:33)
+        at /Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/tests/testcases/practise-automation-tests.spec.ts:49:22
 
     attachment #14: screenshot (image/png) ─────────────────────────────────────────────────────────
     allure/allure-results/practise-automation-tests--c938d-pp-Tests-Handle-popups-test-Chrome/test-failed-1.png
@@ -81,91 +54,37 @@ Warning: attachment allure/allure-results/practise-automation-tests--90a82-s-Fil
     ────────────────────────────────────────────────────────────────────────────────────────────────
 ]]>
 </failure>
-<system-err>
-<![CDATA[
-Warning: attachment allure/allure-results/practise-automation-tests--c938d-pp-Tests-Handle-popups-test-Chrome/test-failed-1.png is missing
-Warning: attachment allure/allure-results/practise-automation-tests--c938d-pp-Tests-Handle-popups-test-Chrome/video.webm is missing
-Warning: attachment allure/allure-results/practise-automation-tests--c938d-pp-Tests-Handle-popups-test-Chrome/trace.zip is missing]]>
-</system-err>
-</testcase>
-<testcase name="Practice Automation App Tests › Upload file test" classname="practise-automation-tests.spec.ts" time="1.812">
-<system-err>
-<![CDATA[
-Warning: attachment allure/allure-results/practise-automation-tests--c33e2--App-Tests-Upload-file-test-Chrome/test-finished-1.png is missing
-Warning: attachment allure/allure-results/practise-automation-tests--c33e2--App-Tests-Upload-file-test-Chrome/video.webm is missing]]>
-</system-err>
-</testcase>
-<testcase name="Practice Automation App Tests › Download file test" classname="practise-automation-tests.spec.ts" time="0.904">
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Practice Automation App Tests › Verify broken links" classname="practise-automation-tests.spec.ts" time="0">
-<skipped>
-</skipped>
-</testcase>
-</testsuite>
-<testsuite name="sauce-demo-tests.spec.ts" timestamp="2025-02-16T02:32:27.623Z" hostname="Chrome" tests="3" failures="0" skipped="0" time="3.25" errors="0">
-<testcase name="Saucedemo tests for successful, unsuccessful logins and add product to cart › Saucedemo tests - Successful login will display Products Page" classname="sauce-demo-tests.spec.ts" time="1.659">
-<system-err>
-<![CDATA[
-Warning: attachment allure/allure-results/sauce-demo-tests-Saucedemo-0c9ec--will-display-Products-Page-Chrome/test-finished-1.png is missing
-Warning: attachment allure/allure-results/sauce-demo-tests-Saucedemo-0c9ec--will-display-Products-Page-Chrome/video.webm is missing]]>
-</system-err>
-</testcase>
-<testcase name="Saucedemo tests for successful, unsuccessful logins and add product to cart › Saucedemo test - Add product to cart" classname="sauce-demo-tests.spec.ts" time="1.097">
-<system-err>
-<![CDATA[
-Warning: attachment allure/allure-results/sauce-demo-tests-Saucedemo-b325d--test---Add-product-to-cart-Chrome/test-finished-1.png is missing
-Warning: attachment allure/allure-results/sauce-demo-tests-Saucedemo-b325d--test---Add-product-to-cart-Chrome/video.webm is missing]]>
-</system-err>
-</testcase>
-<testcase name="Saucedemo tests for successful, unsuccessful logins and add product to cart › Saucedemo test - When login is unsuccessful will not display Products Page" classname="sauce-demo-tests.spec.ts" time="0.494">
-<system-err>
-<![CDATA[
-Warning: attachment allure/allure-results/sauce-demo-tests-Saucedemo-1e988-l-not-display-Products-Page-Chrome/test-finished-1.png is missing
-Warning: attachment allure/allure-results/sauce-demo-tests-Saucedemo-1e988-l-not-display-Products-Page-Chrome/video.webm is missing]]>
-</system-err>
-</testcase>
-</testsuite>
-<testsuite name="the-internet-tests.spec.ts" timestamp="2025-02-16T02:32:27.623Z" hostname="Chrome" tests="5" failures="0" skipped="0" time="11.081" errors="0">
-<testcase name="The Internet App Tests › Dropdown test" classname="the-internet-tests.spec.ts" time="2.343">
-<system-err>
-<![CDATA[
-Warning: attachment allure/allure-results/the-internet-tests-The-Internet-App-Tests-Dropdown-test-Chrome/test-finished-1.png is missing
-Warning: attachment allure/allure-results/the-internet-tests-The-Internet-App-Tests-Dropdown-test-Chrome/video.webm is missing]]>
-</system-err>
-</testcase>
-<testcase name="The Internet App Tests › Login test - successful login" classname="the-internet-tests.spec.ts" time="2.339">
-<system-err>
-<![CDATA[
-Warning: attachment allure/allure-results/the-internet-tests-The-Int-896b4-gin-test---successful-login-Chrome/test-finished-1.png is missing
-Warning: attachment allure/allure-results/the-internet-tests-The-Int-896b4-gin-test---successful-login-Chrome/video.webm is missing]]>
-</system-err>
-</testcase>
-<testcase name="The Internet App Tests › Logout test - successful logout" classname="the-internet-tests.spec.ts" time="2.248">
-<system-err>
-<![CDATA[
-Warning: attachment allure/allure-results/the-internet-tests-The-Int-a511c-ut-test---successful-logout-Chrome/test-finished-1.png is missing
-Warning: attachment allure/allure-results/the-internet-tests-The-Int-a511c-ut-test---successful-logout-Chrome/video.webm is missing]]>
-</system-err>
-</testcase>
-<testcase name="The Internet App Tests › Checkbox test" classname="the-internet-tests.spec.ts" time="2.215">
-<system-err>
-<![CDATA[
-Warning: attachment allure/allure-results/the-internet-tests-The-Internet-App-Tests-Checkbox-test-Chrome/test-finished-1.png is missing
-Warning: attachment allure/allure-results/the-internet-tests-The-Internet-App-Tests-Checkbox-test-Chrome/video.webm is missing]]>
-</system-err>
-</testcase>
-<testcase name="The Internet App Tests › Key presses test" classname="the-internet-tests.spec.ts" time="1.936">
 <system-out>
-<![CDATA[Key Press Input is displayed and ready for interaction
+<![CDATA[
+[[ATTACHMENT|allure/allure-results/practise-automation-tests--c938d-pp-Tests-Handle-popups-test-Chrome/test-failed-1.png]]
+
+[[ATTACHMENT|allure/allure-results/practise-automation-tests--c938d-pp-Tests-Handle-popups-test-Chrome/video.webm]]
+
+[[ATTACHMENT|allure/allure-results/practise-automation-tests--c938d-pp-Tests-Handle-popups-test-Chrome/trace.zip]]
 ]]>
 </system-out>
-<system-err>
+</testcase>
+<testcase name="Practice Automation App Tests › Upload file test" classname="practise-automation-tests.spec.ts" time="2.332">
+<system-out>
 <![CDATA[
-Warning: attachment allure/allure-results/the-internet-tests-The-Internet-App-Tests-Key-presses-test-Chrome/test-finished-1.png is missing
-Warning: attachment allure/allure-results/the-internet-tests-The-Internet-App-Tests-Key-presses-test-Chrome/video.webm is missing]]>
-</system-err>
+[[ATTACHMENT|allure/allure-results/practise-automation-tests--c33e2--App-Tests-Upload-file-test-Chrome/test-finished-1.png]]
+
+[[ATTACHMENT|allure/allure-results/practise-automation-tests--c33e2--App-Tests-Upload-file-test-Chrome/video.webm]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Practice Automation App Tests › Download file test" classname="practise-automation-tests.spec.ts" time="3.433">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|allure/allure-results/practise-automation-tests--0bdfd-pp-Tests-Download-file-test-Chrome/test-finished-1.png]]
+
+[[ATTACHMENT|allure/allure-results/practise-automation-tests--0bdfd-pp-Tests-Download-file-test-Chrome/video.webm]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Practice Automation App Tests › Verify broken links" classname="practise-automation-tests.spec.ts" time="1.256">
+<skipped>
+</skipped>
 </testcase>
 </testsuite>
 </testsuites>

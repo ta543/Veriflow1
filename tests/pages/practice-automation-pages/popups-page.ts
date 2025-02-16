@@ -3,9 +3,9 @@
  * This test suite validates popup handling on practice-automation.com
  */
 
-import { click, fill, acceptAlert, handlePromptPopup, dismissAlert } from '@ActionUtils';
+import { click, acceptAlert, dismissAlert } from '@ActionUtils';
 import { expectPageToHaveURL, expectElementToBeVisible } from '@AssertUtils';
-import { getLocatorByRole, getLocatorByText, getLocator } from '@LocatorUtils';
+import { getLocatorByRole, getLocatorByText } from '@LocatorUtils';
 import { getText } from '@ElementUtils';
 
 
@@ -55,7 +55,6 @@ export async function clickPromptPopupButton() {
 
 export async function verifyPromptPopupText() {
   const textLocator = getPromptConfirmText();
-  const actualText = await getText(textLocator);
   await expectElementToBeVisible(textLocator);
 }
 
