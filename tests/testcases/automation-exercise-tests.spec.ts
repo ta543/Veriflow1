@@ -5,7 +5,7 @@
 
 import { test } from '@PageSetup';
 import { setupAllure } from '@AllureMetaData';
-import { ContactFormData } from '@TestDataAutomationExercise';
+// import { ContactFormData } from '@TestDataAutomationExercise';
 import * as HomePage from '@AutomationExerciseHomePage';
 import * as ProductsPage from '@AutomationExerciseProductsPage';
 import * as CartPage from '@AutomationExerciseCartPage';
