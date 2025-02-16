@@ -19,6 +19,7 @@ const getPromptConfirmText = () => getLocatorByText('Fine, be that way...');
 
 // Methods
 export async function navigateToPopupsPage() {
+  
   await click(popupsHeading());
   await expectPageToHaveURL(/.*popups/);
 }
