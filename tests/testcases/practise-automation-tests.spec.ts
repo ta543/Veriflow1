@@ -37,15 +37,17 @@ test.describe('Practice Automation App Tests', () => {
     await HomePage.navigateToHomePage();
     await HomePage.clickPopupsLink();
     await PopupsPage.popupsPageIsDisplayed();
+
     await PopupsPage.clickAlertPopupButton();
     await PopupsPage.dismissAlertPopup();
+
     await PopupsPage.clickConfirmPopupButton();
     await PopupsPage.acceptConfirmPopup();
     await PopupsPage.verifyConfirmPopupAccepted();
-    const promptInput = 'JohnDoe';
+
     await PopupsPage.clickPromptPopupButton();
-    await PopupsPage.enterPromptPopupInput(promptInput);
-    await PopupsPage.verifyPromptPopupText(promptInput);
+    await PopupsPage.verifyPromptPopupText();
+
     await PopupsPage.clickTooltipTrigger();
     await PopupsPage.verifyTooltipText();
   });

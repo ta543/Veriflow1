@@ -24,6 +24,7 @@
       "@PageUtils": ["./utils/page-utils"],
       "@TimeoutConstants": ["./utils/timeout-constants"],
       "@AssertUtils": ["./utils/assert-utils"],
+      "@ElementUtils": ["./utils/element-utils"],
       "@ActionUtils": ["./utils/action-utils"],
       "@LocatorUtils": ["./utils/locator-utils"],
       // Test Data

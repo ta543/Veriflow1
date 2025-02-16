@@ -74,6 +74,17 @@ export async function goBack(options?: NavigationOptions): Promise<void> {
 }
 
 /**
+ * Handles JavaScript prompt popups by entering text and accepting the dialog.
+ * @param {string} promptText - The text to enter into the prompt dialog.
+ */
+export async function handlePromptPopup(promptText: string): Promise<void> {
+  getPage().once('dialog', async (dialog: Dialog) => {
+    console.log(`📌 Prompt detected: ${dialog.message()}`);
+    await dialog.accept(promptText); // ✅ Accepts the prompt with `promptText`
+  });
+}
+
+/**
  * Waits for a specified amount of time.
  * @param {number} ms - The amount of time to wait in milliseconds.
  */

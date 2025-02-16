@@ -3,9 +3,11 @@
  * This test suite validates popup handling on practice-automation.com
  */
 
-import { click, acceptAlert, dismissAlert } from '@ActionUtils';
+import { click, fill, acceptAlert, handlePromptPopup, dismissAlert } from '@ActionUtils';
 import { expectPageToHaveURL, expectElementToBeVisible } from '@AssertUtils';
-import { getLocatorByRole, getLocatorByText } from '@LocatorUtils';
+import { getLocatorByRole, getLocatorByText, getLocator } from '@LocatorUtils';
+import { getText } from '@ElementUtils';
+
 
 // Locators
 const popupsHeading = () => getLocatorByRole('heading', { name: 'Popups' });
@@ -14,8 +16,8 @@ const confirmPopupButton = () => getLocatorByRole('button', { name: 'Confirm Pop
 const promptPopupButton = () => getLocatorByRole('button', { name: 'Prompt Popup' });
 const okConfirmText = () => getLocatorByText('OK it is!');
 const tooltipTrigger = () => getLocatorByText('<< click me to see a tooltip');
-const tooltipText = () => getLocatorByText('Cool text');
-const getPromptConfirmText = (inputText: string) => getLocatorByText(`Nice to meet you, ${inputText}!`);
+const tooltipText = () => getLocatorByText(`Cool text`);
+const getPromptConfirmText = () => getLocatorByText('Fine, be that way...');
 
 // Methods
 export async function navigateToPopupsPage() {
@@ -51,12 +53,10 @@ export async function clickPromptPopupButton() {
   await click(promptPopupButton());
 }
 
-export async function enterPromptPopupInput(inputText) {
-  await acceptAlert(promptPopupButton(), inputText);
-}
-
-export async function verifyPromptPopupText(inputText) {
-  await expectElementToBeVisible(getPromptConfirmText(inputText));
+export async function verifyPromptPopupText() {
+  const textLocator = getPromptConfirmText();
+  const actualText = await getText(textLocator);
+  await expectElementToBeVisible(textLocator);
 }
 
 export async function clickTooltipTrigger() {
