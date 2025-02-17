@@ -53,14 +53,25 @@
     "locator": "npx playwright codegen https://practice-automation.com/",
     "test list": "npx playwright test --list",
     "test devtools": "npx playwright test --ui",
+    "syntax": "npx tsc --noEmit",
+    "report": "npx playwright show-report playwright-report",
+    "trace": "npx playwright show-trace --port 0",
+    "ui": "playwright test --ui-port 0",
+    "lint": "eslint 'tests/**/*.ts' 'src/**/*.ts' 'playwright.config.ts'",
+    "lint:fix": "eslint 'tests/**/*.ts' 'src/**/*.ts' 'playwright.config.ts' --fix",
+    "prepare": "husky install",
+    "format": "prettier --write 'tests/**/*.ts' 'src/**/*.ts' 'playwright.config.ts' '**/*.json' '**/*.md' '!package-lock.json' '!dist/**/*' '!build/**/*'",
+    "allure": "allure generate ./allure-results --clean && allure open ./allure-report",
+
+
+
+    
+
     "test:chrome": "cd $BASE_DIR && npx playwright test --retries 0 --project=chrome",
     "test:chrome-headed": "cd $BASE_DIR && npx playwright test -j 1 --retries 0 --headed --project=chrome",
     "test:reg": "cd $BASE_DIR && npx playwright test --project=chrome -g '@reg'",
     "build": "tsc",
     "test:smoke": "npx playwright test --project=chrome -g '@smoke'",
-    "report": "npx playwright show-report playwright-report",
-    "trace": "npx playwright show-trace --port 0",
-    "allure": "allure generate ./allure-results --clean && allure open ./allure-report",
     "postinstall": "playwright install"
   },
   "husky": {

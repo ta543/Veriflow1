@@ -1,18 +1,18 @@
 import { APIRequestContext } from '@playwright/test';
-import { post, del } from '@APIUtils';
+import { POST, DEL, GET, PUT } from '@APIUtils';
 
 const BASE_URL = 'https://automationexercise.com/api';
 
 export async function getAllProducts(request: APIRequestContext) {
-    return await request.get(`${BASE_URL}/productsList`);
+    return await request.GET(`${BASE_URL}/productsList`);
 }
 
 export async function getAllBrands(request: APIRequestContext) {
-    return await request.get(`${BASE_URL}/brandsList`);
+    return await request.GET(`${BASE_URL}/brandsList`);
 }
 
 export async function putAllBrands(request: APIRequestContext) {
-    const response = await request.put(`${BASE_URL}/brandsList`);
+    const response = await request.PUT(`${BASE_URL}/brandsList`);
     return {
         status: response.status(),
         body: await response.json()
@@ -20,7 +20,7 @@ export async function putAllBrands(request: APIRequestContext) {
 }
 
 export async function searchProduct(request: APIRequestContext, productName: string) {
-    const response = await post(request, `${BASE_URL}/searchProduct`, { 
+    const response = await POST(request, `${BASE_URL}/searchProduct`, { 
         search_product: productName
     });
     return {
@@ -35,7 +35,7 @@ export async function verifyLogin(request: APIRequestContext, email?: string, pa
     if (email) requestBody.email = email;
     if (password) requestBody.password = password;
 
-    const response = await post(request, `${BASE_URL}/verifyLogin`, requestBody);
+    const response = await POST(request, `${BASE_URL}/verifyLogin`, requestBody);
 
     return {
         status: response.status(),
@@ -44,7 +44,7 @@ export async function verifyLogin(request: APIRequestContext, email?: string, pa
 }
 
 export async function deleteVerifyLogin(request: APIRequestContext) {
-    const response = await del(request, `${BASE_URL}/verifyLogin`);
+    const response = await DEL(request, `${BASE_URL}/verifyLogin`);
     return {
         status: response.status(),
         body: await response.json()

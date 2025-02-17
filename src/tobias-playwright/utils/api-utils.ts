@@ -17,8 +17,8 @@ import { APIRequestContext, APIResponse, expect } from '@playwright/test';
  * @param {object} headers - Optional headers for the request.
  * @returns {Promise<APIResponse>} - The API response.
  */
-export async function get(request: APIRequestContext, endpoint: string, headers: object = {}): Promise<APIResponse> {
-    return await request.get(endpoint, {
+export async function GET(request: APIRequestContext, endpoint: string, headers: object = {}): Promise<APIResponse> {
+    return await request.GET(endpoint, {
         headers: { 'Content-Type': 'application/json', ...headers }
     });
 }
@@ -31,13 +31,13 @@ export async function get(request: APIRequestContext, endpoint: string, headers:
  * @param {object} headers - Optional headers for the request.
  * @returns {Promise<APIResponse>} - The API response.
  */
-export async function post(
+export async function POST(
     request: APIRequestContext, 
     endpoint: string, 
     data: object, 
     headers: object = {}
 ): Promise<APIResponse> {
-    return await request.post(endpoint, {
+    return await request.POST(endpoint, {
         headers: { 'Content-Type': 'application/json', ...headers },
         data
     });
@@ -51,13 +51,13 @@ export async function post(
  * @param {object} headers - Optional headers for the request.
  * @returns {Promise<APIResponse>} - The API response.
  */
-export async function put(
+export async function PUT(
     request: APIRequestContext, 
     endpoint: string, 
     data: object = {}, 
     headers: object = {}
 ): Promise<APIResponse> {
-    return await request.put(endpoint, {
+    return await request.PUT(endpoint, {
         headers: { 'Content-Type': 'application/json', ...headers },
         data
     });
@@ -70,7 +70,7 @@ export async function put(
  * @param {object} headers - Optional headers for the request.
  * @returns {Promise<APIResponse>} - The API response.
  */
-export async function del(request: APIRequestContext, endpoint: string, headers: object = {}): Promise<APIResponse> {
+export async function DEL(request: APIRequestContext, endpoint: string, headers: object = {}): Promise<APIResponse> {
     return await request.delete(endpoint, {
         headers: { 'Content-Type': 'application/json', ...headers }
     });
@@ -84,13 +84,13 @@ export async function del(request: APIRequestContext, endpoint: string, headers:
  * @param {object} headers - Optional headers for the request.
  * @returns {Promise<APIResponse>} - The API response.
  */
-export async function patch(
+export async function PATCH(
     request: APIRequestContext, 
     endpoint: string, 
     data: object = {}, 
     headers: object = {}
 ): Promise<APIResponse> {
-    return await request.patch(endpoint, {
+    return await request.PATCH(endpoint, {
         headers: { 'Content-Type': 'application/json', ...headers },
         data
     });
