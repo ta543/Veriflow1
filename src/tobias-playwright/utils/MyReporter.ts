@@ -46,7 +46,6 @@ export default class MyReporter implements Reporter {
                 console.log(chalk.bold.yellowBright(`🎉 All tests passed!`));
             }
             console.log(chalk.gray(`🕒 Test execution finished.`));
-            console.log('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n');
         }
     }
 }

@@ -5,12 +5,12 @@
 
 import { test } from '@PageSetup';
 import { setupAllure } from "@AllureMetaData";
-import * as HomePage from '@PracticeAutomationHomePage';
-import * as FormFieldsPage from '@PracticeAutomationFormFieldsPage';
-import * as PopupsPage from '@PracticeAutomationPopUpsPage';
-import * as FileUploadPage from '@PracticeAutomationFileUploadPage';
-import * as FileDownloadPage from '@PracticeAutomationFileDownloadPage';
-import * as BrokenLinksPage from '@PracticeAutomationBrokenLinksPage';
+import * as HomePage from '../../pages/e2e-testing/practice-automation-pages/home-page';
+import * as FormFieldsPage from '../../pages/e2e-testing/practice-automation-pages/form-fields-page';
+import * as PopupsPage from '../../pages/e2e-testing/practice-automation-pages/popups-page';
+import * as FileUploadPage from '../../pages/e2e-testing/practice-automation-pages/file-upload-page';
+import * as FileDownloadPage from '../../pages/e2e-testing/practice-automation-pages/file-download-page';
+import * as BrokenLinksPage from '../../pages/e2e-testing/practice-automation-pages/broken-links-page';
 
 test.describe('Practice Automation App Tests', () => {
 

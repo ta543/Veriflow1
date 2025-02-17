@@ -5,11 +5,11 @@
 
 import { test } from '@PageSetup';
 import { setupAllure } from '@AllureMetaData';
-import * as HomePage from '@TheInternetHomePage';
-import * as DropdownPage from '@TheInternetDropdownPage';
-import * as LoginPage from '@TheInternetLoginPage';
-import * as CheckboxPage from '@TheInternetCheckboxPage';
-import * as KeypressPage from '@TheInternetKeypressPage';
+import * as HomePage from '../../pages/e2e-testing/the-internet-pages/home-page';
+import * as DropdownPage from '../../pages/e2e-testing/the-internet-pages/dropdown-page';
+import * as LoginPage from '../../pages/e2e-testing/the-internet-pages/login-page';
+import * as CheckboxPage from '../../pages/e2e-testing/the-internet-pages/checkbox-page';
+import * as KeypressPage from '../../pages/e2e-testing/the-internet-pages/keypress-page';
 
 test.describe('The Internet App Tests', () => {
   test('Dropdown test', async () => {

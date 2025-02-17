@@ -5,10 +5,10 @@
 
 import { test } from '@PageSetup';
 import { setupAllure } from '@AllureMetaData';
-import * as HomePage from '@AutomationExerciseHomePage';
-import * as ProductsPage from '@AutomationExerciseProductsPage';
-import * as CartPage from '@AutomationExerciseCartPage';
-import * as ContactUsPage from '@AutomationExerciseContactUsPage';
+import * as HomePage from '../../pages/e2e-testing/automation-exercise-pages/home-page';
+import * as ProductsPage from '../../pages/e2e-testing/automation-exercise-pages/products-page';
+import * as CartPage from '../../pages/e2e-testing/automation-exercise-pages/cart-page';
+import * as ContactUsPage from '../../pages/e2e-testing/automation-exercise-pages/contact-us-page';
 
 test.describe('Automation Exercise App Tests', () => {
   test('Search product test', async () => {

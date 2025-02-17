@@ -199,25 +199,74 @@ export const testMetadata = {
     feature: 'Broken Links Verification',
     story: 'User checks for broken links and verifies their status',
   },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  apiAutomationExerciseGetAllProducts: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'AE-API-001',
+    description: 'Validate that the Get All Products API returns a list of products successfully.',
+    tags: ['AutomationExercise', 'API', 'Products'],
+    severity: 'NORMAL',
+    suite: 'Automation Exercise - API',
+    feature: 'Product API',
+    story: 'User retrieves a list of all products via API',
+  },
+  apiAutomationExerciseGetAllBrands: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'AE-API-002',
+    description: 'Validate that the Get All Brands API returns a list of brands successfully.',
+    tags: ['AutomationExercise', 'API', 'Brands'],
+    severity: 'NORMAL',
+    suite: 'Automation Exercise - API',
+    feature: 'Brand API',
+    story: 'User retrieves a list of all brands via API',
+  },
+  apiAutomationExerciseGetAllBrands: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'AE-API-002',
+    description: 'Validate that the Get All Brands API returns a list of brands successfully.',
+    tags: ['AutomationExercise', 'API', 'Brands'],
+    severity: 'NORMAL',
+    suite: 'Automation Exercise - API',
+    feature: 'Brand API',
+    story: 'User retrieves a list of all brands via API',
+  },
+  apiAutomationExercisePutAllBrands: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'AE-API-004',
+    description: 'Validate that sending a PUT request to the Get All Brands API returns a 405 error.',
+    tags: ['AutomationExercise', 'API', 'Brands', 'NegativeTest'],
+    severity: 'NORMAL',
+    suite: 'Automation Exercise - API',
+    feature: 'Brand API',
+    story: 'User attempts to send an unsupported PUT request to the brands API',
+  },
+  apiAutomationExercisePostSearchProduct: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'AE-API-005',
+    description: 'Validate that sending a POST request to search for a product returns a list of matching products.',
+    tags: ['AutomationExercise', 'API', 'Search', 'Products'],
+    severity: 'NORMAL',
+    suite: 'Automation Exercise - API',
+    feature: 'Product Search API',
+    story: 'User searches for a product using the API and retrieves relevant results',
+  },
+  apiAutomationExerciseVerifyLoginNoEmail: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'AE-API-008',
+    description: 'Validate that sending a POST request to the Verify Login API without an email returns a 400 error.',
+    tags: ['AutomationExercise', 'API', 'Login', 'NegativeTest'],
+    severity: 'NORMAL',
+    suite: 'Automation Exercise - API',
+    feature: 'Login API',
+    story: 'User attempts to log in without providing an email parameter'
+  },
+  apiAutomationExerciseDeleteVerifyLogin: {
+    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
+    tms: 'AE-API-009',
+    description: 'Validate that sending a DELETE request to the Verify Login API returns a 405 error.',
+    tags: ['AutomationExercise', 'API', 'Login', 'NegativeTest'],
+    severity: 'NORMAL',
+    suite: 'Automation Exercise - API',
+    feature: 'Login API',
+    story: 'User attempts to send an unsupported DELETE request to the verify login endpoint'
+  },
 };

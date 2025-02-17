@@ -25,6 +25,7 @@ export default defineConfig({
    * See https://playwright.dev/docs/api/class-testconfig#testconfig-testdir
    */
   testDir: './tests/testcases',
+  testMatch: '**/*.spec.ts',
   outputDir: "allure/allure-results",
   // testMatch: ['**/*.spec.ts', '**/*.test.ts'],
   /**
@@ -57,6 +58,7 @@ export default defineConfig({
     ['allure-playwright', { outputFolder: 'allure/allure-results' }],
     ['junit', { outputFile: 'test-results.xml' }],
     ['./src/tobias-playwright/utils/MyReporter'],
+    // ['list'],
     ['json', { outputFile: 'allure/allure-results/test-results.json' }],
     ['html', { outputFolder: 'allure/allure-report', open: 'never' }],
   ],
@@ -116,6 +118,7 @@ export default defineConfig({
         },
       },
     },
+    
     /*
 
     {

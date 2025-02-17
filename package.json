@@ -47,10 +47,11 @@
     "winston": "^3.10.0"
   },
   "scripts": {
-    "test file testcase": "npx playwright test tests/testcases/automation-exercise-tests.spec --grep='Contact Us form test'",
-    "test file": "npx playwright test tests/testcases/practise-automation-tests.spec",
+    "test file testcase": "npx playwright test tests/testcases/api-test-cases/automation-exercise-api-tests.spec.ts --grep='DELETE Request - Verify Login should return 405'",
+    "test file": "npx playwright test tests/testcases/api-test-cases/automation-exercise-api-tests.spec.ts",
     "test all": "npx playwright test",
     "locator": "npx playwright codegen https://practice-automation.com/",
+    "test list": "npx playwright test --list",
     "test devtools": "npx playwright test --ui",
     "test:chrome": "cd $BASE_DIR && npx playwright test --retries 0 --project=chrome",
     "test:chrome-headed": "cd $BASE_DIR && npx playwright test -j 1 --retries 0 --headed --project=chrome",
