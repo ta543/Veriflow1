@@ -3,7 +3,7 @@
  * These utilities include GET, POST, PUT, DELETE, and other common HTTP request methods.
  */
 
-import { APIRequestContext, APIResponse } from '@playwright/test';
+import { APIRequestContext, APIResponse, expect } from '@playwright/test';
 
 /**
  * 1. General API Methods: This section contains functions for making common HTTP requests.
