@@ -18,7 +18,7 @@ import { APIRequestContext, APIResponse, expect } from '@playwright/test';
  * @returns {Promise<APIResponse>} - The API response.
  */
 export async function GET(request: APIRequestContext, endpoint: string, headers: object = {}): Promise<APIResponse> {
-    return await request.GET(endpoint, {
+    return await request.get(endpoint, {
         headers: { 'Content-Type': 'application/json', ...headers }
     });
 }
@@ -37,7 +37,7 @@ export async function POST(
     data: object, 
     headers: object = {}
 ): Promise<APIResponse> {
-    return await request.POST(endpoint, {
+    return await request.post(endpoint, {
         headers: { 'Content-Type': 'application/json', ...headers },
         data
     });
@@ -57,7 +57,7 @@ export async function PUT(
     data: object = {}, 
     headers: object = {}
 ): Promise<APIResponse> {
-    return await request.PUT(endpoint, {
+    return await request.put(endpoint, {
         headers: { 'Content-Type': 'application/json', ...headers },
         data
     });
@@ -90,7 +90,7 @@ export async function PATCH(
     data: object = {}, 
     headers: object = {}
 ): Promise<APIResponse> {
-    return await request.PATCH(endpoint, {
+    return await request.patch(endpoint, {
         headers: { 'Content-Type': 'application/json', ...headers },
         data
     });
