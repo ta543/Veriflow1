@@ -1,17 +1,17 @@
-import { APIRequestContext } from '@playwright/test';
+import { APIRequestContext, APIResponse } from '@playwright/test';
 import { get, post, put, del } from '@APIUtils';
 
 const BASE_URL = 'https://automationexercise.com/api';
 
-export async function getAllProducts(request: any) {
+export async function getAllProducts(request: APIRequestContext) {
     return await request.get(`${BASE_URL}/productsList`);
 }
 
-export async function getAllBrands(request: any) {
+export async function getAllBrands(request: APIRequestContext) {
     return await request.get(`${BASE_URL}/brandsList`);
 }
 
-export async function putAllBrands(request: any) {
+export async function putAllBrands(request: APIRequestContext) {
     const response = await request.put(`${BASE_URL}/brandsList`);
     return {
         status: response.status(),
@@ -19,7 +19,7 @@ export async function putAllBrands(request: any) {
     };
 }
 
-export async function searchProduct(request: any, productName: string) {
+export async function searchProduct(request: APIRequestContext, productName: string) {
     const response = await post(request, `${BASE_URL}/searchProduct`, { 
         search_product: productName
     });
@@ -29,7 +29,7 @@ export async function searchProduct(request: any, productName: string) {
     };
 }
 
-export async function verifyLogin(request: any, email?: string, password?: string) {
+export async function verifyLogin(request: APIRequestContext, email?: string, password?: string) {
     const requestBody: Record<string, string> = {};
 
     if (email) requestBody.email = email;
@@ -43,7 +43,7 @@ export async function verifyLogin(request: any, email?: string, password?: strin
     };
 }
 
-export async function deleteVerifyLogin(request: any) {
+export async function deleteVerifyLogin(request: APIRequestContext) {
     const response = await del(request, `${BASE_URL}/verifyLogin`);
     return {
         status: response.status(),
