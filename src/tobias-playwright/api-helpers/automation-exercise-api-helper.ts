@@ -1,5 +1,5 @@
-import { APIRequestContext, APIResponse } from '@playwright/test';
-import { get, post, put, del } from '@APIUtils';
+import { APIRequestContext } from '@playwright/test';
+import { post, del } from '@APIUtils';
 
 const BASE_URL = 'https://automationexercise.com/api';
 

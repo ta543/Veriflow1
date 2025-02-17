@@ -219,16 +219,6 @@ export const testMetadata = {
     feature: 'Brand API',
     story: 'User retrieves a list of all brands via API',
   },
-  apiAutomationExerciseGetAllBrands: {
-    owner: 'Tobias Andersen - [tobias@tobiasa.com]',
-    tms: 'AE-API-002',
-    description: 'Validate that the Get All Brands API returns a list of brands successfully.',
-    tags: ['AutomationExercise', 'API', 'Brands'],
-    severity: 'NORMAL',
-    suite: 'Automation Exercise - API',
-    feature: 'Brand API',
-    story: 'User retrieves a list of all brands via API',
-  },
   apiAutomationExercisePutAllBrands: {
     owner: 'Tobias Andersen - [tobias@tobiasa.com]',
     tms: 'AE-API-004',
