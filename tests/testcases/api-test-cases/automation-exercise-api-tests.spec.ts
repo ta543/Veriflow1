@@ -5,8 +5,8 @@
 
 import { test, expect, request as playwrightRequest, APIRequestContext } from '@playwright/test';
 import { setupAllure } from '@AllureMetaData';
-import { initializeAPI } from '@AutomationExerciseAPI';
-import * as API from '@AutomationExerciseAPI';
+import { initializeAPI, getAllProducts, getAllBrands, putAllBrands, deleteVerifyLogin, searchProduct, verifyLogin } from '@AutomationExerciseAPI';
+// import * as API from '@AutomationExerciseAPI';
 
 let apiRequest: APIRequestContext; // ✅ Declare a global API request instance
 
@@ -23,7 +23,7 @@ test.describe('Automation Exercise API Tests', () => {
   
   test('Get All Products List', async ({ request }) => {
     setupAllure('apiAutomationExerciseGetAllProducts');
-    const response = await API.getAllProducts(request);
+    const response = await getAllProducts(request);
     
     expect(response.status()).toBe(200);
     const responseBody = await response.json();
@@ -32,7 +32,7 @@ test.describe('Automation Exercise API Tests', () => {
 
   test('Get All Brands List', async ({ request }) => {
       setupAllure('apiAutomationExerciseGetAllBrands');
-      const response = await API.getAllBrands(request);
+      const response = await getAllBrands(request);
 
       expect(response.status()).toBe(200);
       const responseBody = await response.json();
@@ -41,7 +41,7 @@ test.describe('Automation Exercise API Tests', () => {
 
   test('PUT Request - All Brands List should return 405', async ({ request }) => {
     setupAllure('apiAutomationExercisePutAllBrands');
-    const response = await API.putAllBrands(request);
+    const response = await putAllBrands(request);
 
     expect(response.body.responseCode).toBe(405);
     expect(response.body.message).toBe("This request method is not supported.");
@@ -50,7 +50,7 @@ test.describe('Automation Exercise API Tests', () => {
   test('POST Request - Search for a Product', async ({ request }) => {
     setupAllure('apiAutomationExercisePostSearchProduct');
     const productName = "tshirt";
-    const response = await API.searchProduct(request, productName);
+    const response = await searchProduct(request, productName);
     
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('responseCode', 400);
@@ -62,7 +62,7 @@ test.describe('Automation Exercise API Tests', () => {
     const requestBody = {
         password: "password123"
     };
-    const response = await API.verifyLogin(request, undefined, requestBody.password);
+    const response = await verifyLogin(request, undefined, requestBody.password);
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('responseCode', 400);
@@ -71,7 +71,7 @@ test.describe('Automation Exercise API Tests', () => {
 
   test('DELETE Request - Verify Login should return 405', async ({ request }) => {
     setupAllure('apiAutomationExerciseDeleteVerifyLogin');
-    const response = await API.deleteVerifyLogin(request);
+    const response = await deleteVerifyLogin(request);
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('responseCode', 405);
