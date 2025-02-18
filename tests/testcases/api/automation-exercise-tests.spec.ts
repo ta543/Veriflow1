@@ -27,7 +27,6 @@ test.describe('Automation Exercise API Tests', () => {
     const response = await API.getAllProducts();
     
     await APIUtils.APICode(response, 200);
-    const responseBody = await response.json();
     await APIUtils.APIBody(response, 'products', expect.any(Array)); 
   });
 
@@ -36,7 +35,6 @@ test.describe('Automation Exercise API Tests', () => {
     const response = await API.getAllBrands();
 
     await APIUtils.APICode(response, 200);
-    // const responseBody = await response.json();
     await APIUtils.APIBody(response, 'brands', expect.any(Array)); 
   });
 

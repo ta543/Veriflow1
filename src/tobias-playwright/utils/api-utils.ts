@@ -112,15 +112,21 @@ export class APIUtils {
      * @param {string} key - The JSON key to validate.
      * @param {any} expectedValue - The expected value of the key.
      */
-    static async APIBody(response: APIResponse | { body: any }, key: string, expectedValue: any): Promise<void> {
+    static async APIBody(
+        response: APIResponse | { status: number; body: any },
+        key: string,
+        expectedValue: any
+    ): Promise<void> {
         let responseBody: any;
+
         if ('json' in response && typeof response.json === 'function') {
             responseBody = await response.json();
         } else if ('body' in response) {
             responseBody = response.body;
         } else {
-            throw new Error('Invalid response format. Expected APIResponse or { body: any }');
+            throw new Error('Invalid response format. Expected APIResponse or an object with status and body.');
         }
+
         expect(responseBody).toHaveProperty(key, expectedValue);
     }
 }
