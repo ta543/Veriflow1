@@ -23,7 +23,7 @@ test.describe('Automation Exercise API Tests', () => {
   
   test('Get All Products List', async ({ request }) => {
     setupAllure('apiAutomationExerciseGetAllProducts');
-    const response = await getAllProducts(request);
+    const response = await getAllProducts();
     
     expect(response.status()).toBe(200);
     const responseBody = await response.json();
@@ -32,7 +32,7 @@ test.describe('Automation Exercise API Tests', () => {
 
   test('Get All Brands List', async ({ request }) => {
       setupAllure('apiAutomationExerciseGetAllBrands');
-      const response = await getAllBrands(request);
+      const response = await getAllBrands();
 
       expect(response.status()).toBe(200);
       const responseBody = await response.json();
@@ -41,7 +41,7 @@ test.describe('Automation Exercise API Tests', () => {
 
   test('PUT Request - All Brands List should return 405', async ({ request }) => {
     setupAllure('apiAutomationExercisePutAllBrands');
-    const response = await putAllBrands(request);
+    const response = await putAllBrands();
 
     expect(response.body.responseCode).toBe(405);
     expect(response.body.message).toBe("This request method is not supported.");
@@ -50,7 +50,7 @@ test.describe('Automation Exercise API Tests', () => {
   test('POST Request - Search for a Product', async ({ request }) => {
     setupAllure('apiAutomationExercisePostSearchProduct');
     const productName = "tshirt";
-    const response = await searchProduct(request, productName);
+    const response = await searchProduct(productName);
     
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('responseCode', 400);
@@ -71,7 +71,7 @@ test.describe('Automation Exercise API Tests', () => {
 
   test('DELETE Request - Verify Login should return 405', async ({ request }) => {
     setupAllure('apiAutomationExerciseDeleteVerifyLogin');
-    const response = await deleteVerifyLogin(request);
+    const response = await deleteVerifyLogin();
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('responseCode', 405);
