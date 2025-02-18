@@ -4,7 +4,6 @@
  */
 
 import { test, expect, request as playwrightRequest, APIRequestContext } from '@playwright/test';
-import { request } from '@playwright/test';
 import { setupAllure } from '@AllureMetaData';
 import { initializeAPI, getAllProducts, getAllBrands, putAllBrands, deleteVerifyLogin, searchProduct, verifyLogin } from '@AutomationExerciseAPI';
 // import * as API from '@AutomationExerciseAPI';
