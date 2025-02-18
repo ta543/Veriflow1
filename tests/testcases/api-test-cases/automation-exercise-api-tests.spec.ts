@@ -21,7 +21,7 @@ test.afterAll(async () => {
 
 test.describe('Automation Exercise API Tests', () => {
   
-  test('Get All Products List', async ({ request }) => {
+  test('Get All Products List', async () => {
     setupAllure('apiAutomationExerciseGetAllProducts');
     const response = await getAllProducts();
     
@@ -30,7 +30,7 @@ test.describe('Automation Exercise API Tests', () => {
     expect(responseBody).toHaveProperty('products');
   });
 
-  test('Get All Brands List', async ({ request }) => {
+  test('Get All Brands List', async () => {
       setupAllure('apiAutomationExerciseGetAllBrands');
       const response = await getAllBrands();
 
@@ -39,7 +39,7 @@ test.describe('Automation Exercise API Tests', () => {
       expect(responseBody).toHaveProperty('brands');
   });
 
-  test('PUT Request - All Brands List should return 405', async ({ request }) => {
+  test('PUT Request - All Brands List should return 405', async () => {
     setupAllure('apiAutomationExercisePutAllBrands');
     const response = await putAllBrands();
 
@@ -47,7 +47,7 @@ test.describe('Automation Exercise API Tests', () => {
     expect(response.body.message).toBe("This request method is not supported.");
   });
 
-  test('POST Request - Search for a Product', async ({ request }) => {
+  test('POST Request - Search for a Product', async () => {
     setupAllure('apiAutomationExercisePostSearchProduct');
     const productName = "tshirt";
     const response = await searchProduct(productName);
@@ -57,7 +57,7 @@ test.describe('Automation Exercise API Tests', () => {
     expect(response.body).toHaveProperty('message', "Bad request, search_product parameter is missing in POST request.");
   });
 
-  test('POST Request - Verify Login without Email Parameter', async ({ request }) => {
+  test('POST Request - Verify Login without Email Parameter', async () => {
     setupAllure('apiAutomationExerciseVerifyLoginNoEmail');
     const requestBody = {
         password: "password123"
@@ -69,7 +69,7 @@ test.describe('Automation Exercise API Tests', () => {
     expect(response.body).toHaveProperty('message', "Bad request, email or password parameter is missing in POST request.");
   });
 
-  test('DELETE Request - Verify Login should return 405', async ({ request }) => {
+  test('DELETE Request - Verify Login should return 405', async () => {
     setupAllure('apiAutomationExerciseDeleteVerifyLogin');
     const response = await deleteVerifyLogin();
 
