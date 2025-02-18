@@ -81,13 +81,8 @@ export class APIUtils {
      * @param {object} data - The JSON payload to send.
      * @returns {Promise<APIResponse>} - The API response.
      */
-    static async PATCH(
-        request: APIRequestContext, 
-        endpoint: string, 
-        data: object = {}, 
-        headers: object = {}
-    ): Promise<APIResponse> {
-        return await request.patch(endpoint, {
+    static async PATCH(endpoint: string, data: object = {}, headers: object = {}): Promise<APIResponse> {
+        return await APIUtils.request.patch(endpoint, {
             headers: { 'Content-Type': 'application/json', ...headers },
             data
         });

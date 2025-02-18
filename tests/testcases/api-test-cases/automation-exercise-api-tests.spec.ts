@@ -12,11 +12,11 @@ let apiRequest: APIRequestContext; // ✅ Declare a global API request instance
 
 test.beforeAll(async ({ }) => {
   apiRequest = await playwrightRequest.newContext(); // ✅ Create new API request context
-  initializeAPI(apiRequest); // ✅ Initialize the API context
+  initializeAPI(apiRequest);
 });
 
 test.afterAll(async () => {
-  await apiRequest.dispose(); // ✅ Dispose of API request context after tests
+  await apiRequest.dispose();
 });
 
 test.describe('Automation Exercise API Tests', () => {
