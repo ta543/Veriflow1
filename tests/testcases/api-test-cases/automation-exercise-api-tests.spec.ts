@@ -62,7 +62,7 @@ test.describe('Automation Exercise API Tests', () => {
     const requestBody = {
         password: "password123"
     };
-    const response = await verifyLogin(apiRequest, undefined, requestBody.password);
+    const response = await verifyLogin(apiRequest, requestBody.password);
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('responseCode', 400);
