@@ -4,6 +4,7 @@
  */
 
 import { test, expect, request as playwrightRequest, APIRequestContext } from '@playwright/test';
+import { request } from '@playwright/test';
 import { setupAllure } from '@AllureMetaData';
 import { initializeAPI, getAllProducts, getAllBrands, putAllBrands, deleteVerifyLogin, searchProduct, verifyLogin } from '@AutomationExerciseAPI';
 // import * as API from '@AutomationExerciseAPI';
@@ -62,7 +63,7 @@ test.describe('Automation Exercise API Tests', () => {
     const requestBody = {
         password: "password123"
     };
-    const response = await verifyLogin(apiRequest, requestBody.password);
+    const response = await verifyLogin(request, requestBody.password);
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('responseCode', 400);
