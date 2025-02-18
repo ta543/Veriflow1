@@ -4,7 +4,7 @@ import { APIUtils } from '@APIUtils';
 const BASE_URL = 'https://automationexercise.com/api';
 
 export function initializeAPI(request: APIRequestContext) {
-    APIUtils.init(request); // ✅ Initialize once, no need to pass request each time
+    APIUtils.init(request);
 }
 
 export async function getAllProducts() {
