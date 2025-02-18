@@ -113,12 +113,13 @@ export class APIUtils {
      * @param {any} expectedValue - The expected value of the key.
      */
     static async APIBody(response: APIResponse | { body: any }, key: string, expectedValue: any): Promise<void> {
-        let responseBody;
-        
-        if (typeof response.json === 'function') {
+        let responseBody: any;
+        if ('json' in response && typeof response.json === 'function') {
             responseBody = await response.json();
-        } else {
+        } else if ('body' in response) {
             responseBody = response.body;
+        } else {
+            throw new Error('Invalid response format. Expected APIResponse or { body: any }');
         }
         expect(responseBody).toHaveProperty(key, expectedValue);
     }
