@@ -98,10 +98,10 @@ export class APIUtils {
 
     /**
      * Validates the status code of an API response.
-     * @param {APIResponse} response - The API response object.
+     * @param {APIResponse | { status: number; body: any }} response - The API response object.
      * @param {number} expectedStatus - The expected HTTP status code.
      */
-    static async APICode(response: APIResponse, expectedStatus: number): Promise<void> {
+    static async APICode(response: APIResponse | { status: number; body: any }, expectedStatus: number): Promise<void> {
         const statusCode = typeof response.status === 'function' ? response.status() : response.status;
         expect(statusCode).toBe(expectedStatus);
     }
