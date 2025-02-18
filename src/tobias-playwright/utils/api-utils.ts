@@ -113,7 +113,13 @@ export class APIUtils {
      * @param {any} expectedValue - The expected value of the key.
      */
     static async APIBody(response: APIResponse | { body: any }, key: string, expectedValue: any): Promise<void> {
-        const responseBody = 'json' in response ? await response.json() : response.body;
+        let responseBody;
+        
+        if (typeof response.json === 'function') {
+            responseBody = await response.json();
+        } else {
+            responseBody = response.body;
+        }
         expect(responseBody).toHaveProperty(key, expectedValue);
     }
-    }
+}

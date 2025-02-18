@@ -75,8 +75,8 @@ test.describe('Automation Exercise API Tests', () => {
     setupAllure('apiAutomationExerciseDeleteVerifyLogin');
     const response = await API.deleteVerifyLogin();
 
-    expect(response.status).toBe(200);
-    expect(response.body).toHaveProperty('responseCode', 405);
-    expect(response.body).toHaveProperty('message', "This request method is not supported.");
+    await APIUtils.APICode(response, 200);
+    await APIUtils.APIBody(response, 'responseCode', 405);
+    await APIUtils.APIBody(response, 'message', "This request method is not supported.");
   });
 });
