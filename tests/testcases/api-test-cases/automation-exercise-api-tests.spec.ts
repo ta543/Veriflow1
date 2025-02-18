@@ -18,7 +18,7 @@ test.beforeAll(async ({ }) => {
 
 test.afterAll(async () => {
   await apiRequest.dispose();
-});
+}); 
 
 test.describe('Automation Exercise API Tests', () => {
   
