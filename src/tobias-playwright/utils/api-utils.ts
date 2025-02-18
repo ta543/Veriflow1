@@ -101,17 +101,19 @@ export class APIUtils {
      * @param {APIResponse} response - The API response object.
      * @param {number} expectedStatus - The expected HTTP status code.
      */
-    static async validateStatus(response: APIResponse, expectedStatus: number): Promise<void> {
-        expect(response.status()).toBe(expectedStatus);
+    static async APICode(response: APIResponse, expectedStatus: number): Promise<void> {
+        const statusCode = typeof response.status === 'function' ? response.status() : response.status;
+        expect(statusCode).toBe(expectedStatus);
     }
 
     /**
-     * Validates that an API response contains a specific JSON property.
-     * @param {APIResponse} response - The API response object.
-     * @param {string} property - The property to check for in the JSON response.
+     * Validates that an API response contains specific JSON properties with expected values.
+     * @param {APIResponse | { body: any }} response - The API response object.
+     * @param {string} key - The JSON key to validate.
+     * @param {any} expectedValue - The expected value of the key.
      */
-    static async validateResponseProperty(response: APIResponse, property: string): Promise<void> {
-        const responseBody = await response.json();
-        expect(responseBody).toHaveProperty(property);
+    static async APIBody(response: APIResponse | { body: any }, key: string, expectedValue: any): Promise<void> {
+        const responseBody = 'json' in response ? await response.json() : response.body;
+        expect(responseBody).toHaveProperty(key, expectedValue);
     }
-}
+    }

@@ -6,6 +6,7 @@
 import { test, expect, request as playwrightRequest, APIRequestContext } from '@playwright/test';
 import { setupAllure } from '@AllureMetaData';
 import { initializeAPI } from '@AutomationExerciseAPI';
+import { APIUtils } from '@APIUtils';
 import * as API from '@AutomationExerciseAPI';
 
 let apiRequest: APIRequestContext;
@@ -25,26 +26,27 @@ test.describe('Automation Exercise API Tests', () => {
     setupAllure('apiAutomationExerciseGetAllProducts');
     const response = await API.getAllProducts();
     
-    expect(response.status()).toBe(200);
+    await APIUtils.APICode(response, 200);
     const responseBody = await response.json();
-    expect(responseBody).toHaveProperty('products');
+    await APIUtils.APIBody(response, 'products', expect.any(Array)); 
   });
 
   test('Get All Brands List', async () => {
-      setupAllure('apiAutomationExerciseGetAllBrands');
-      const response = await API.getAllBrands();
+    setupAllure('apiAutomationExerciseGetAllBrands');
+    const response = await API.getAllBrands();
 
-      expect(response.status()).toBe(200);
-      const responseBody = await response.json();
-      expect(responseBody).toHaveProperty('brands');
+    await APIUtils.APICode(response, 200);
+    const responseBody = await response.json();
+    await APIUtils.APIBody(response, 'brands', expect.any(Array)); 
   });
 
   test('PUT Request - All Brands List should return 405', async () => {
     setupAllure('apiAutomationExercisePutAllBrands');
     const response = await API.putAllBrands();
 
-    expect(response.body.responseCode).toBe(405);
-    expect(response.body.message).toBe("This request method is not supported.");
+    await APIUtils.APICode(response, 200);
+    await APIUtils.APIBody(response, 'responseCode', 405);
+    await APIUtils.APIBody(response, 'message', "This request method is not supported.");
   });
 
   test('POST Request - Search for a Product', async () => {
@@ -52,9 +54,9 @@ test.describe('Automation Exercise API Tests', () => {
     const productName = "tshirt";
     const response = await API.searchProduct(productName);
     
-    expect(response.status).toBe(200);
-    expect(response.body).toHaveProperty('responseCode', 400);
-    expect(response.body).toHaveProperty('message', "Bad request, search_product parameter is missing in POST request.");
+    await APIUtils.APICode(response, 200);
+    await APIUtils.APIBody(response, 'responseCode', 400);
+    await APIUtils.APIBody(response, 'message', "Bad request, search_product parameter is missing in POST request.");
   });
 
   test('POST Request - Verify Login without Email Parameter', async () => {
@@ -64,9 +66,9 @@ test.describe('Automation Exercise API Tests', () => {
     };
     const response = await API.verifyLogin(undefined, requestBody.password);
 
-    expect(response.status).toBe(200);
-    expect(response.body).toHaveProperty('responseCode', 400);
-    expect(response.body).toHaveProperty('message', "Bad request, email or password parameter is missing in POST request.");
+    await APIUtils.APICode(response, 200);
+    await APIUtils.APIBody(response, 'responseCode', 400);
+    await APIUtils.APIBody(response, 'message', "Bad request, email or password parameter is missing in POST request.");
   });
 
   test('DELETE Request - Verify Login should return 405', async () => {

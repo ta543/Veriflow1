@@ -4,11 +4,19 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: false
 
-run-name: '👷🚧[#${{ github.run_number }}][${{ github.event.inputs.testConfig }} Tests] 🌍Env: ${{ github.event.inputs.appEnvironment }} | 🏷️Release: ${{ github.event.inputs.appRelease }} | 📱Device: ${{ github.event.inputs.deviceConfig }}'
+run-name: '👷🚧[#${{ github.run_number }}][${{ github.event.inputs.testType }} Tests] 🌍Env: ${{ github.event.inputs.appEnvironment }} | 🏷️Release: ${{ github.event.inputs.appRelease }} | 🌍 BrowserStack'
 
 on:
   workflow_dispatch:
     inputs:
+      testType:
+        description: 'Select the Type of Test'
+        required: true
+        type: choice
+        options:
+          - 'Web'
+          - 'API'
+          - 'Electron'
       appEnvironment:
         description: 'Select the VeriFlow application environment:'
         required: true
@@ -23,30 +31,22 @@ on:
         default: 'latest'
         type: string
       testConfig:
-        description: 'Select the VeriFlow Tests'
+        description: 'Select the Test File/Class'
         required: true
         type: choice
         options:
-          - 'FeatureA'
-          - 'FeatureB'
-          - 'FeatureC'
-          - 'FeatureD'
-      deviceConfig:
-        description: 'Select the device configuration:'
+          - 'automation-exercise-tests.spec.ts'
+          - 'practice-expandtesting-tests.spec.ts'
+          - 'sauce-demo-tests.spec.ts'
+      browserConfig:
+        description: 'Select Browser for Web Testing'
         required: true
         type: choice
         options:
-          - 'GooglePixel4XL'
-          - 'GalaxyS23Ultra'
-          - 'iPhone14Pro'
-          - 'iPhone15ProMax'
-      devicePlatform:
-        description: 'Select the device platform:'
-        required: true
-        type: choice
-        options:
-          - 'android'
-          - 'ios'
+          - 'chrome'
+          - 'firefox'
+          - 'edge'
+          - 'safari'
       enableTestRetry:
         description: 'Enable re-run of failing tests?'
         required: true
@@ -56,61 +56,48 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: 'Build & Execute Tests 🛠️'
+    name: 'Execute Playwright Tests on BrowserStack 🛠️'
     env:
       PERSONAL_GITHUB_KEY: ${{ secrets.PERSONAL_GITHUB_KEY }}
+      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
       CICD: true
 
     steps:
       - name: 'Checkout Code'
         uses: actions/checkout@v4
 
-      - name: 'Set up Elixir'
-        uses: erlef/setup-elixir@v1
+      - name: 'Set up Node.js'
+        uses: actions/setup-node@v4
         with:
-          elixir-version: '1.14.0'
-          otp-version: '25.0'
+          node-version: '18'
 
       - name: 'Install Dependencies'
-        run: mix deps.get
+        run: npm ci
 
-      - name: 'Verify Chrome Installation'
-        run: google-chrome --version
+      - name: 'Install Playwright Browsers'
+        run: npx playwright install --with-deps
 
-      - name: 'Start Headless Chrome'
-        run: |
-          export DISPLAY=:99
-          nohup google-chrome --headless --disable-gpu --remote-debugging-port=9222 --no-sandbox --disable-dev-shm-usage &
-
-      - name: 'Compile Project'
-        id: compile_project
-        run: mix compile
-        continue-on-error: true
-
-      - name: 'Run Elixir Tests'
+      - name: 'Run Playwright Tests on BrowserStack'
         id: test_project
-        env:
-          CHROME_HEADLESS: true
         run: |
           mkdir -p test-results/
-          TEST_CONFIG="${{ github.event.inputs.testConfig }}"
-          TEST_CONFIG="${TEST_CONFIG// /}Tests"
+          TEST_FILE="${{ github.event.inputs.testConfig }}"
+          
+          PLAYWRIGHT_COMMAND="BROWSERSTACK_USERNAME=${{ secrets.BROWSERSTACK_USERNAME }} \
+          BROWSERSTACK_ACCESS_KEY=${{ secrets.BROWSERSTACK_ACCESS_KEY }} \
+          npx playwright test tests/testcases/api/$TEST_FILE \
+          --project=${{ github.event.inputs.browserConfig }} \
+          --retries=${{ github.event.inputs.enableTestRetry }} \
+          --workers=2"
 
-          MIX_COMMAND="mix test --trace \
-          --env=${{ github.event.inputs.appEnvironment }} \
-          --release=${{ github.event.inputs.appRelease }} \
-          --device=${{ github.event.inputs.deviceConfig }} \
-          --platform=${{ github.event.inputs.devicePlatform }} \
-          --retry=${{ github.event.inputs.enableTestRetry }} \
-          --formatter JUnitFormatter --formatter ExUnit.CLIFormatter"
-
-          echo "Executing command: $MIX_COMMAND"
-          eval $MIX_COMMAND
+          echo "Executing command: $PLAYWRIGHT_COMMAND"
+          eval $PLAYWRIGHT_COMMAND
 
       - name: 'Generate Allure Report'
         run: |
           mkdir -p test-results/
-          allure generate test-results/ --clean -o allure-report/
+          npx allure generate test-results/ --clean -o allure-report/
 
       - name: 'Upload Allure Report'
         uses: actions/upload-artifact@v4
@@ -133,8 +120,8 @@ jobs:
           script: |
             const url = `${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
             const testMessage = process.env.test_result === 'success'
-              ? '✅ Tests passed successfully.'
-              : `❌ Tests failed. [View Workflow Run](${url})`;
+              ? '✅ Playwright Tests passed successfully on BrowserStack.'
+              : `❌ Playwright Tests failed. [View Workflow Run](${url})`;
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,

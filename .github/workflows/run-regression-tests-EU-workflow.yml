@@ -1,0 +1,132 @@
+name: VeriFlow | Run Regression Tests [Parallel]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+run-name: "🚀 Parallel Regression | Env: ${{ github.event.inputs.appEnvironment || 'UAT' }} | Threads: ${{ github.event.inputs.parallelRuns }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      testGroup:
+        description: 'Select Regression Test Group'
+        required: true
+        type: choice
+        options:
+          - 'ALL'
+          - 'REGRESSION'
+          - 'SMOKE'
+      appEnvironment:
+        description: 'Select Test Environment'
+        required: true
+        type: choice
+        options:
+          - 'UAT'
+          - 'QA'
+          - 'DEV'
+      browserConfig:
+        description: 'Select Browser'
+        required: true
+        type: choice
+        options:
+          - 'chrome'
+          - 'firefox'
+          - 'edge'
+          - 'safari'
+      parallelRuns:
+        description: 'Number of Parallel Threads'
+        required: true
+        default: '4'
+        type: string
+      enableTestRetry:
+        description: 'Enable Test Retry for Failures'
+        required: true
+        default: false
+        type: boolean
+      enableSlackReport:
+        description: 'Enable Slack Notifications'
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: 'Execute Playwright Parallel Tests on BrowserStack'
+    env:
+      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      BROWSERSTACK_PARALLEL_RUNS: ${{ github.event.inputs.parallelRuns }}
+      CICD: true
+
+    steps:
+      - name: 'Checkout Code'
+        uses: actions/checkout@v4
+
+      - name: 'Set up Node.js'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: 'Install Dependencies'
+        run: npm ci
+
+      - name: 'Install Playwright Browsers'
+        run: npx playwright install --with-deps
+
+      - name: 'Run Playwright Tests in Parallel on BrowserStack'
+        id: test_execution
+        run: |
+          mkdir -p test-results/
+          
+          PLAYWRIGHT_COMMAND="BROWSERSTACK_USERNAME=${{ secrets.BROWSERSTACK_USERNAME }} \
+          BROWSERSTACK_ACCESS_KEY=${{ secrets.BROWSERSTACK_ACCESS_KEY }} \
+          npx playwright test tests/testcases/api/ --grep '${{ github.event.inputs.testGroup }}' \
+          --project=${{ github.event.inputs.browserConfig }} \
+          --workers=${{ github.event.inputs.parallelRuns }} \
+          --retries=${{ github.event.inputs.enableTestRetry }}"
+
+          echo "Executing: $PLAYWRIGHT_COMMAND"
+          eval $PLAYWRIGHT_COMMAND
+
+      - name: 'Generate Allure Report'
+        run: |
+          mkdir -p test-results/
+          npx allure generate test-results/ --clean -o allure-report/
+
+      - name: 'Upload Allure Report'
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report/
+          retention-days: 7
+
+      - name: 'Upload Test Results'
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test-results/
+          retention-days: 7
+
+      - name: 'Send Slack Report (Optional)'
+        if: env.ENABLE_SLACK_REPORT == 'true'
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_TOKEN }}
+        with:
+          args: 'Parallel Regression Tests completed for VeriFlow - Env: ${{ github.event.inputs.appEnvironment }} - Threads: ${{ github.event.inputs.parallelRuns }}'
+
+  publish-report:
+    needs: test
+    runs-on: ubuntu-latest
+    name: 'Generate Test Reports 📊'
+    steps:
+      - name: 'Download Test Results'
+        uses: actions/download-artifact@v4
+        with:
+          name: 'test-results'
+          path: test-results/
+
+      - name: 'Generate Report'
+        run: ./generate-report.sh test-results/
