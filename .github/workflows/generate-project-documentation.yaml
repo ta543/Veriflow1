@@ -1,0 +1,43 @@
+name: GMAP Mobile | Generate Playwright Documentation
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+run-name: "👷🚧[#${{ github.run_number }}][Documentation] Generating Playwright Docs for ${{ github.event.repository.name }}"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: "Generate Playwright Documentation 📚"
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v4
+
+      - name: "Set up Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: "Cache Node.js dependencies"
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+
+      - name: "Install dependencies"
+        run: npm ci
+
+      - name: "Generate Playwright Docs"
+        run: npx playwright test --reporter=json > playwright-report.json
+
+      - name: "Upload Playwright Documentation"
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-documentation
+          path: playwright-report.json
+          retention-days: 30

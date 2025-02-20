@@ -1,0 +1,26 @@
+name: TEST | Deploy and Trigger Tests
+
+run-name: "👷🚧[#${{ github.run_number }}][TEST] Build, deploy and execute tests"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-regression-tests:
+    name: "Build & Execute Tests 🛠️"
+    uses: "ta543/webo-tests-okta-auth-automation/.github/workflows/run-tests-from-dev-build-wfe-workflow.yaml@main"
+    with:
+      testModule: "WFE_service-mastercard"
+      testEnvironment: "UAT"
+      testGroup: "ALL"
+      enablePKCE: false
+      enableTestRetry: false
+      enableXrayReport: false
+      enableSlackReport: false
+      triggeredFromDevRepo: true
+    secrets:
+      XRAY_CLIENT_ID: ${{ secrets.XRAY_CLIENT_ID }}
+      XRAY_CLIENT_SECRET: ${{ secrets.XRAY_CLIENT_SECRET }}
+      SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+      CIRCLEK_GLOBAL_GITHUB_READER_APP_ID: ${{ secrets.CIRCLEK_GLOBAL_GITHUB_READER_APP_ID }}
+      CIRCLEK_GLOBAL_GITHUB_READER_APP_PRIVATE_KEY: ${{ secrets.CIRCLEK_GLOBAL_GITHUB_READER_APP_PRIVATE_KEY }}

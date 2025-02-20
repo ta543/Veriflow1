@@ -1,0 +1,20 @@
+addReviewers: true
+addAssignees: author
+reviewers:
+  - kamil-nowocin
+  - Dominik4804C
+  - krishpavuluri
+  - amit-circle-k
+  - tandersonqa
+  - tosgu
+  - pdongare27
+  - ShrutiCircleK
+  - yashaswini-circle-k
+  - hareshprajapati11
+  - pankaj-circle-k
+  - Abhijit-Circle-K
+  - Santhosh-Circle-K
+numberOfReviewers: 0
+filterLabels:
+  exclude:
+    - build-failure
