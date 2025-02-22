@@ -30,7 +30,7 @@ jobs:
 
             const chappy = ['ta543'];
 
-            if (extraFolks.includes(author)) {
+            if (chappy.includes(author)) {
               label = 'chappy';
             }
 
