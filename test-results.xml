@@ -1,0 +1,216 @@
+<testsuites id="" name="" tests="6" failures="6" skipped="0" errors="0" time="4.274248000000001">
+<testsuite name="api-test-cases/automation-exercise-api-tests.spec.ts" timestamp="2025-02-18T00:22:35.782Z" hostname="Chrome" tests="6" failures="6" skipped="0" time="0.464" errors="0">
+<testcase name="Automation Exercise API Tests › Get All Products List" classname="api-test-cases/automation-exercise-api-tests.spec.ts" time="0.341">
+<failure message="automation-exercise-api-tests.spec.ts:17:7 Get All Products List" type="FAILURE">
+<![CDATA[  [Chrome] › api-test-cases/automation-exercise-api-tests.spec.ts:17:7 › Automation Exercise API Tests › Get All Products List 
+
+    Error: apiRequestContext.get: Fixture { request } from beforeAll cannot be reused in a test.
+      - Recommended fix: use a separate { request } in the test.
+      - Alternatively, manually create APIRequestContext in beforeAll and dispose it in afterAll.
+    See https://playwright.dev/docs/api-testing#sending-api-requests-from-ui-tests for more details.
+
+       at ../../src/tobias-playwright/utils/api-utils.ts:28
+
+      26 |      */
+      27 |     static async GET(endpoint: string, headers: object = {}): Promise<APIResponse> {
+    > 28 |         return await APIUtils.request.get(endpoint, {
+         |                                       ^
+      29 |             headers: { 'Content-Type': 'application/json', ...headers }
+      30 |         });
+      31 |     }
+        at Function.GET (/Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/src/tobias-playwright/utils/api-utils.ts:28:39)
+        at Object.getAllProducts (/Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/src/tobias-playwright/api-helpers/automation-exercise-api-helper.ts:11:27)
+        at /Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/tests/testcases/api-test-cases/automation-exercise-api-tests.spec.ts:19:32
+
+    attachment #14: trace (application/zip) ────────────────────────────────────────────────────────
+    allure/allure-results/api-test-cases-automation--06686-Tests-Get-All-Products-List-Chrome/trace.zip
+    Usage:
+
+        npx playwright show-trace allure/allure-results/api-test-cases-automation--06686-Tests-Get-All-Products-List-Chrome/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-err>
+<![CDATA[
+Warning: attachment allure/allure-results/api-test-cases-automation--06686-Tests-Get-All-Products-List-Chrome/trace.zip is missing]]>
+</system-err>
+</testcase>
+<testcase name="Automation Exercise API Tests › Get All Brands List" classname="api-test-cases/automation-exercise-api-tests.spec.ts" time="0.038">
+<failure message="automation-exercise-api-tests.spec.ts:26:7 Get All Brands List" type="FAILURE">
+<![CDATA[  [Chrome] › api-test-cases/automation-exercise-api-tests.spec.ts:26:7 › Automation Exercise API Tests › Get All Brands List 
+
+    Error: apiRequestContext.get: Fixture { request } from beforeAll cannot be reused in a test.
+      - Recommended fix: use a separate { request } in the test.
+      - Alternatively, manually create APIRequestContext in beforeAll and dispose it in afterAll.
+    See https://playwright.dev/docs/api-testing#sending-api-requests-from-ui-tests for more details.
+
+       at ../../src/tobias-playwright/utils/api-utils.ts:28
+
+      26 |      */
+      27 |     static async GET(endpoint: string, headers: object = {}): Promise<APIResponse> {
+    > 28 |         return await APIUtils.request.get(endpoint, {
+         |                                       ^
+      29 |             headers: { 'Content-Type': 'application/json', ...headers }
+      30 |         });
+      31 |     }
+        at Function.GET (/Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/src/tobias-playwright/utils/api-utils.ts:28:39)
+        at Object.getAllBrands (/Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/src/tobias-playwright/api-helpers/automation-exercise-api-helper.ts:15:27)
+        at /Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/tests/testcases/api-test-cases/automation-exercise-api-tests.spec.ts:28:34
+
+    attachment #14: trace (application/zip) ────────────────────────────────────────────────────────
+    allure/allure-results/api-test-cases-automation--c92e3-I-Tests-Get-All-Brands-List-Chrome/trace.zip
+    Usage:
+
+        npx playwright show-trace allure/allure-results/api-test-cases-automation--c92e3-I-Tests-Get-All-Brands-List-Chrome/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-err>
+<![CDATA[
+Warning: attachment allure/allure-results/api-test-cases-automation--c92e3-I-Tests-Get-All-Brands-List-Chrome/trace.zip is missing]]>
+</system-err>
+</testcase>
+<testcase name="Automation Exercise API Tests › PUT Request - All Brands List should return 405" classname="api-test-cases/automation-exercise-api-tests.spec.ts" time="0.024">
+<failure message="automation-exercise-api-tests.spec.ts:35:7 PUT Request - All Brands List should return 405" type="FAILURE">
+<![CDATA[  [Chrome] › api-test-cases/automation-exercise-api-tests.spec.ts:35:7 › Automation Exercise API Tests › PUT Request - All Brands List should return 405 
+
+    Error: apiRequestContext.put: Fixture { request } from beforeAll cannot be reused in a test.
+      - Recommended fix: use a separate { request } in the test.
+      - Alternatively, manually create APIRequestContext in beforeAll and dispose it in afterAll.
+    See https://playwright.dev/docs/api-testing#sending-api-requests-from-ui-tests for more details.
+
+       at ../../src/tobias-playwright/utils/api-utils.ts:57
+
+      55 |      */
+      56 |     static async PUT(endpoint: string, data: object = {}, headers: object = {}): Promise<APIResponse> {
+    > 57 |         return await APIUtils.request.put(endpoint, {
+         |                                       ^
+      58 |             headers: { 'Content-Type': 'application/json', ...headers },
+      59 |             data
+      60 |         });
+        at Function.PUT (/Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/src/tobias-playwright/utils/api-utils.ts:57:39)
+        at Object.putAllBrands (/Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/src/tobias-playwright/api-helpers/automation-exercise-api-helper.ts:19:37)
+        at /Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/tests/testcases/api-test-cases/automation-exercise-api-tests.spec.ts:37:32
+
+    attachment #15: trace (application/zip) ────────────────────────────────────────────────────────
+    allure/allure-results/api-test-cases-automation--4d079-ands-List-should-return-405-Chrome/trace.zip
+    Usage:
+
+        npx playwright show-trace allure/allure-results/api-test-cases-automation--4d079-ands-List-should-return-405-Chrome/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-err>
+<![CDATA[
+Warning: attachment allure/allure-results/api-test-cases-automation--4d079-ands-List-should-return-405-Chrome/trace.zip is missing]]>
+</system-err>
+</testcase>
+<testcase name="Automation Exercise API Tests › POST Request - Search for a Product" classname="api-test-cases/automation-exercise-api-tests.spec.ts" time="0.02">
+<failure message="automation-exercise-api-tests.spec.ts:43:7 POST Request - Search for a Product" type="FAILURE">
+<![CDATA[  [Chrome] › api-test-cases/automation-exercise-api-tests.spec.ts:43:7 › Automation Exercise API Tests › POST Request - Search for a Product 
+
+    Error: apiRequestContext.post: Fixture { request } from beforeAll cannot be reused in a test.
+      - Recommended fix: use a separate { request } in the test.
+      - Alternatively, manually create APIRequestContext in beforeAll and dispose it in afterAll.
+    See https://playwright.dev/docs/api-testing#sending-api-requests-from-ui-tests for more details.
+
+       at ../../src/tobias-playwright/utils/api-utils.ts:42
+
+      40 |      */
+      41 |     static async POST(endpoint: string, data: object, headers: object = {}): Promise<APIResponse> {
+    > 42 |         return await APIUtils.request.post(endpoint, {
+         |                                       ^
+      43 |             headers: { 'Content-Type': 'application/json', ...headers },
+      44 |             data
+      45 |         });
+        at Function.POST (/Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/src/tobias-playwright/utils/api-utils.ts:42:39)
+        at Object.searchProduct (/Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/src/tobias-playwright/api-helpers/automation-exercise-api-helper.ts:27:37)
+        at /Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/tests/testcases/api-test-cases/automation-exercise-api-tests.spec.ts:46:32
+
+    attachment #15: trace (application/zip) ────────────────────────────────────────────────────────
+    allure/allure-results/api-test-cases-automation--3c4cd-uest---Search-for-a-Product-Chrome/trace.zip
+    Usage:
+
+        npx playwright show-trace allure/allure-results/api-test-cases-automation--3c4cd-uest---Search-for-a-Product-Chrome/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-err>
+<![CDATA[
+Warning: attachment allure/allure-results/api-test-cases-automation--3c4cd-uest---Search-for-a-Product-Chrome/trace.zip is missing]]>
+</system-err>
+</testcase>
+<testcase name="Automation Exercise API Tests › POST Request - Verify Login without Email Parameter" classname="api-test-cases/automation-exercise-api-tests.spec.ts" time="0.021">
+<failure message="automation-exercise-api-tests.spec.ts:53:7 POST Request - Verify Login without Email Parameter" type="FAILURE">
+<![CDATA[  [Chrome] › api-test-cases/automation-exercise-api-tests.spec.ts:53:7 › Automation Exercise API Tests › POST Request - Verify Login without Email Parameter 
+
+    Error: apiRequestContext.post: Fixture { request } from beforeAll cannot be reused in a test.
+      - Recommended fix: use a separate { request } in the test.
+      - Alternatively, manually create APIRequestContext in beforeAll and dispose it in afterAll.
+    See https://playwright.dev/docs/api-testing#sending-api-requests-from-ui-tests for more details.
+
+       at ../../src/tobias-playwright/utils/api-utils.ts:42
+
+      40 |      */
+      41 |     static async POST(endpoint: string, data: object, headers: object = {}): Promise<APIResponse> {
+    > 42 |         return await APIUtils.request.post(endpoint, {
+         |                                       ^
+      43 |             headers: { 'Content-Type': 'application/json', ...headers },
+      44 |             data
+      45 |         });
+        at Function.POST (/Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/src/tobias-playwright/utils/api-utils.ts:42:39)
+        at Object.verifyLogin (/Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/src/tobias-playwright/api-helpers/automation-exercise-api-helper.ts:42:37)
+        at /Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/tests/testcases/api-test-cases/automation-exercise-api-tests.spec.ts:58:32
+
+    attachment #15: trace (application/zip) ────────────────────────────────────────────────────────
+    allure/allure-results/api-test-cases-automation--bc667-gin-without-Email-Parameter-Chrome/trace.zip
+    Usage:
+
+        npx playwright show-trace allure/allure-results/api-test-cases-automation--bc667-gin-without-Email-Parameter-Chrome/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-err>
+<![CDATA[
+Warning: attachment allure/allure-results/api-test-cases-automation--bc667-gin-without-Email-Parameter-Chrome/trace.zip is missing]]>
+</system-err>
+</testcase>
+<testcase name="Automation Exercise API Tests › DELETE Request - Verify Login should return 405" classname="api-test-cases/automation-exercise-api-tests.spec.ts" time="0.02">
+<failure message="automation-exercise-api-tests.spec.ts:65:7 DELETE Request - Verify Login should return 405" type="FAILURE">
+<![CDATA[  [Chrome] › api-test-cases/automation-exercise-api-tests.spec.ts:65:7 › Automation Exercise API Tests › DELETE Request - Verify Login should return 405 
+
+    TypeError: _APIUtils.APIUtils.DELETE is not a function
+
+       at ../../src/tobias-playwright/api-helpers/automation-exercise-api-helper.ts:51
+
+      49 |
+      50 | export async function deleteVerifyLogin() {
+    > 51 |     const response = await APIUtils.DELETE(`${BASE_URL}/verifyLogin`);
+         |                                     ^
+      52 |     return {
+      53 |         status: response.status(),
+      54 |         body: await response.json()
+        at Object.deleteVerifyLogin (/Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/src/tobias-playwright/api-helpers/automation-exercise-api-helper.ts:51:37)
+        at /Volumes/chappy/chappy/Coding/Projects/work/personal/QA/Veriflow-playwright/tests/testcases/api-test-cases/automation-exercise-api-tests.spec.ts:67:32
+
+    attachment #15: trace (application/zip) ────────────────────────────────────────────────────────
+    allure/allure-results/api-test-cases-automation--0139f-ify-Login-should-return-405-Chrome/trace.zip
+    Usage:
+
+        npx playwright show-trace allure/allure-results/api-test-cases-automation--0139f-ify-Login-should-return-405-Chrome/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-err>
+<![CDATA[
+Warning: attachment allure/allure-results/api-test-cases-automation--0139f-ify-Login-should-return-405-Chrome/trace.zip is missing]]>
+</system-err>
+</testcase>
+</testsuite>
+</testsuites>

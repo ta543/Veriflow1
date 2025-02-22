@@ -1,16 +1,21 @@
-![Last Commit](https://img.shields.io/github/last-commit/vasu31dev/veriflow-playwright) ![Pull Requests](https://img.shields.io/github/issues-pr-raw/vasu31dev/veriflow-playwright)
-
----
+![Last Commit](https://img.shields.io/github/last-commit/ta543/Veriflow1) ![Pull Requests](https://img.shields.io/github/issues-pr-raw/ta543/Veriflow1)
 
 <div align="center">
 
-## Veriflow QA Framework
+# Veriflow QA Framework
 
 </div>
 
----
+Veriflow is a **Playwright TypeScript Framework** that is **versatile, scalable, and efficient** for automation testing designed to streamline **web (desktop & mobile), API, and Electron testing**. Built on [**Playwright**](https://playwright.dev/) and [**TypeScript**](https://www.typescriptlang.org/), it provides a **robust** and **high-performance** testing environment for QA professionals, developers, and business analysts.
 
-The **Playwright TypeScript Framework** is a **versatile, scalable, and efficient** automation framework designed to streamline **web (desktop & mobile), API, and Electron testing**. Built on [**Playwright**](https://playwright.dev/) and [**TypeScript**](https://www.typescriptlang.org/), it provides a **robust** and **high-performance** testing environment for QA professionals, developers, and business analysts.
+## Websites Tested On
+1. 🔹 **[Automation Exercise](https://www.automationexercise.com/signup)**
+2. 🔹 **[SauceDemo](https://www.saucedemo.com/)**
+3. 🔹 **[The Internet](https://the-internet.herokuapp.com/)**
+4. 🔹 **[Practice Automation](https://practice-automation.com/)**
+5. 🔹 **[Practice Expand Testing](https://practice.expandtesting.com/)**
+
+---
 
 ## Key Features:
 
@@ -313,8 +318,6 @@ Here's what each option does:
 - `--grep-invert`: The opposite of `-g` or grep. It filters out the tests to run.
 - `--max-failures 4`: Stops after the first 4 test failures. This includes a count of failures in the retry test as well.
 - `--list`: Lists all the tests, but does not run them.
-
-[![CLI Parallel Execution](http://img.youtube.com/vi/gtkoLizAsaw/0.jpg)](https://www.youtube.com/watch?v=gtkoLizAsaw 'CLI Parallel Execution')
 
 For more information, please refer to the [Playwright CLI documentation](https://playwright.dev/docs/test-cli).
 

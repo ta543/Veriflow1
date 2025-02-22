@@ -7,7 +7,11 @@
 
 import { execSync } from 'child_process';
 
-export default function globalSetup() {
-  console.log('Global setup is running...');
-  execSync('./clean-allure-results.sh', { stdio: 'inherit' });
+async function globalSetup() {
+  console.log("🔄 Moving old Allure results to history...");
+  execSync("bash prepare-allure.sh", { stdio: "inherit" });
+
+  console.log("✅ Allure results cleaned. Ready for test execution.");
 }
+
+export default globalSetup;

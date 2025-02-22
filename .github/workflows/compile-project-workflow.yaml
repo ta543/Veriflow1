@@ -9,7 +9,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: false
 
-run-name: '👷🚧[#${{ github.run_number }}][Veriflow] PR: "${{ github.event.pull_request.title }}"'
+run-name: '👷🚧[#${{ github.run_number }}][Veriflow Compile] PR: "${{ github.event.pull_request.title }}"'
 
 on:
   pull_request:

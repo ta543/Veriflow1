@@ -1,4 +1,4 @@
-export const LoginCredentials = {
+export const FormFieldsCredentials = {
   username: 'tomsmith',
   password: 'SuperSecretPassword!',
 };

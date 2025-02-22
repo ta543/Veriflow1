@@ -19,9 +19,47 @@
     "strictPropertyInitialization": true,
     "baseUrl": "src/tobias-playwright",
     "paths": {
-      "@pages": ["./tests/pages/*"],
-      "@testdata": ["./tests/testdata/*"],
-      "@utils/*": ["src/utils/*"]
+      // Utils
+      "@PageSetup": ["./setup/page-setup"],
+      "@PageUtils": ["./utils/page-utils"],
+      "@TimeoutConstants": ["./utils/timeout-constants"],
+      "@AssertUtils": ["./utils/assert-utils"],
+      "@ElementUtils": ["./utils/element-utils"],
+      "@ActionUtils": ["./utils/action-utils"],
+      "@APIUtils": ["./utils/api-utils"],
+      "@LocatorUtils": ["./utils/locator-utils"],
+      // Test Data
+      "@TestMetadata": ["./utils/test-metadata"],
+      "@AllureMetaData": ["./utils/setupAllure"],
+      "@TestDataSauceDemo": ["../../tests/testdata/sauce-demo-test-data"],
+      "@TestDataTheInternet": ["../../tests/testdata/the-internet-test-data"],
+      "@TestDataAutomationExercise": ["../../tests/testdata/automation-exercise-testdata"],
+      "@TestDataPractiseAutomationFormFields": ["../../tests/testdata/practise-automation-form-fields-test-data"],
+      // Pages - The Internet
+      "@TheInternetHomePage": ["../../tests/pages/e2e-testing/the-internet-pages/home-page"],
+      "@TheInternetLoginPage": ["../../tests/pages/e2e-testing/the-internet-pages/login-page"],
+      "@TheInternetDropdownPage": ["../../tests/pages/e2e-testing/the-internet-pages/dropdown-page"],
+      "@TheInternetCheckboxPage": ["../../tests/pages/e2e-testing/the-internet-pages/checkbox-page"],
+      "@TheInternetKeypressPage": ["../../tests/pages/e2e-testing/the-internet-pages/keypress-page"],
+      // Pages - Practice Automation
+      "@PracticeAutomationHomePage": ["../../tests/pages/e2e-testing/practice-automation-pages/home-page"],
+      "@PracticeAutomationBrokenLinksPage": ["../../tests/pages/e2e-testing/practice-automation-pages/broken-links-page"],
+      "@PracticeAutomationFileDownloadPage": ["../../tests/pages/e2e-testing/practice-automation-pages/file-download-page"],
+      "@PracticeAutomationFileUploadPage": ["../../tests/pages/e2e-testing/practice-automation-pages/file-upload-page"],
+      "@PracticeAutomationFormFieldsPage": ["../../tests/pages/e2e-testing/practice-automation-pages/form-fields-page"],
+      "@PracticeAutomationPopUpsPage": ["../../tests/pages/e2e-testing/practice-automation-pages/popups-page"],
+      // Pages - Automation Exercise
+      "@AutomationExerciseHomePage": ["../../tests/pages/e2e-testing/automation-exercise-pages/home-page"],
+      "@AutomationExerciseCartPage": ["../../tests/pages/e2e-testing/automation-exercise-pages/cart-page"],
+      "@AutomationExerciseContactUsPage": ["../../tests/pages/e2e-testing/automation-exercise-pages/contact-us-page"],
+      "@AutomationExerciseLoginPage": ["../../tests/pages/e2e-testing/automation-exercise-pages/login-page"],
+      "@AutomationExerciseProductsPage": ["../../tests/pages/e2e-testing/automation-exercise-pages/products-page"],
+      // Pages - Sauce Demo
+      "@SauceDemoLoginPage": ["../../tests/pages/e2e-testing/sauce-demo-pages/sauce-demo-login-page"],
+      "@SauceDemoMiniCartPage": ["../../tests/pages/e2e-testing/sauce-demo-pages/sauce-demo-mini-cart"],
+      "@SauceDemoProductsPage": ["../../tests/pages/e2e-testing/sauce-demo-pages/sauce-demo-products-page"],
+      // API Helpers
+      "@AutomationExerciseAPI": ["./api-helpers/automation-exercise-api-helper"]
     },
     "declaration": false, // No need to generate declaration files (.d.ts) for a test project
     "downlevelIteration": true, // Enables support for iterating on objects like `Map` and `Set` in older environments

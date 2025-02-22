@@ -4,13 +4,9 @@
  * See https://playwright.dev/docs/test-configuration for more details.
  */
 
-import {
-  ACTION_TIMEOUT,
-  EXPECT_TIMEOUT,
-  NAVIGATION_TIMEOUT,
-  TEST_TIMEOUT,
-} from './src/tobias-playwright/utils/timeout-constants';
+import { ACTION_TIMEOUT, EXPECT_TIMEOUT, NAVIGATION_TIMEOUT, TEST_TIMEOUT } from '@TimeoutConstants';
 import { WaitForLoadStateOptions } from 'setup/optional-parameter-types';
+
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 dotenv.config({ path: '.env' });
@@ -29,6 +25,8 @@ export default defineConfig({
    * See https://playwright.dev/docs/api/class-testconfig#testconfig-testdir
    */
   testDir: './tests/testcases',
+  testMatch: '**/*.spec.ts',
+  outputDir: "allure/allure-results",
   // testMatch: ['**/*.spec.ts', '**/*.test.ts'],
   /**
    * Determines whether to run tests within each spec file in parallel, in addition to running the spec files themselves in parallel.
@@ -57,11 +55,14 @@ export default defineConfig({
    */
 
   reporter: [
-    ['./src/tobias-playwright/setup/custom-logger.ts'],
-    ['allure-playwright'],
-    ['html', { open: 'never' }],
-    ['dot'],
+    ['allure-playwright', { outputFolder: 'allure/allure-results' }],
+    ['junit', { outputFile: 'test-results.xml' }],
+    ['./src/tobias-playwright/utils/MyReporter'],
+    // ['list'],
+    ['json', { outputFile: 'allure/allure-results/test-results.json' }],
+    ['html', { outputFolder: 'allure/allure-report', open: 'never' }],
   ],
+  quiet: true,
 
   /**
    * Shared settings for all the projects below.
@@ -117,8 +118,9 @@ export default defineConfig({
         },
       },
     },
+    
+    /*
 
-    /******* Uncomment to run tests in other browsers
     {
       name: 'firefox',
       use: {
@@ -160,8 +162,7 @@ export default defineConfig({
       name: 'Google Chrome',
       use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     },
-
-  ***************/
+ */
   ],
 
   /**
