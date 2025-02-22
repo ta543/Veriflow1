@@ -1,25 +1,16 @@
-name: VeriFlow | Regression Tests
+name: VeriFlow | Regression Tests [Multiple Threads]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: false
 
-run-name: "👷🚧[#${{ github.run_number }}][REGRESSION TESTS] 🌍Env: ${{ github.event.inputs.appEnvironment || 'UAT' }} | 🏷️Release: ${{ github.event.inputs.appRelease || 'latest' }} | 🌍 BrowserStack"
+run-name: "🚀 Parallel Regression | Env: ${{ github.event.inputs.appEnvironment || 'UAT' }} | Threads: ${{ github.event.inputs.parallelRuns }}"
 
 on:
-  schedule:
-    - cron: '30 4  * * 1-5' # 05:30 CET
-    - cron: '30 5  * * 1-5' # 06:30 CET
-    - cron: '30 6  * * 1-5' # 07:30 CET
-    - cron: '30 7  * * 1-5' # 08:30 CET
-    - cron: '00 16 * * 1-5' # 17:00 CET
-    - cron: '00 18 * * 1-5' # 19:00 CET
-    - cron: '00 20 * * 1-5' # 21:00 CET
-
   workflow_dispatch:
     inputs:
       testGroup:
-        description: 'Select the Regression Test Group'
+        description: 'Select Regression Test Group'
         required: true
         type: choice
         options:
@@ -27,7 +18,7 @@ on:
           - 'REGRESSION'
           - 'SMOKE'
       appEnvironment:
-        description: 'Select the VeriFlow environment:'
+        description: 'Select Test Environment'
         required: true
         type: choice
         options:
@@ -35,7 +26,7 @@ on:
           - 'QA'
           - 'DEV'
       browserConfig:
-        description: 'Select Browser for Testing'
+        description: 'Select Browser'
         required: true
         type: choice
         options:
@@ -43,23 +34,18 @@ on:
           - 'firefox'
           - 'edge'
           - 'safari'
-      appRelease:
-        description: 'Enter the application release:'
+      parallelRuns:
+        description: 'Number of Parallel Threads'
         required: true
-        default: 'latest'
+        default: '4'
         type: string
       enableTestRetry:
-        description: 'Enable retry for failing tests?'
-        required: true
-        default: false
-        type: boolean
-      enableXrayImport:
-        description: 'Enable test results upload to XRay?'
+        description: 'Enable Test Retry for Failures'
         required: true
         default: false
         type: boolean
       enableSlackReport:
-        description: 'Enable test results notification on Slack?'
+        description: 'Enable Slack Notifications'
         required: true
         default: false
         type: boolean
@@ -67,15 +53,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: 'Execute Playwright Regression Tests on BrowserStack 🛠️'
+    name: 'Execute Playwright Parallel Tests on BrowserStack'
     env:
       BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
       BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-      APP_ENVIRONMENT: ${{ github.event.inputs.appEnvironment || 'UAT' }}
-      APP_RELEASE: ${{ github.event.inputs.appRelease || 'latest' }}
-      ENABLE_TEST_RETRY: ${{ github.event.inputs.enableTestRetry || false }}
-      ENABLE_XRAY_IMPORT: ${{ github.event.inputs.enableXrayImport || false }}
-      ENABLE_SLACK_REPORT: ${{ github.event.inputs.enableSlackReport || false }}
+      BROWSERSTACK_PARALLEL_RUNS: ${{ github.event.inputs.parallelRuns }}
       CICD: true
 
     steps:
@@ -93,8 +75,8 @@ jobs:
       - name: 'Install Playwright Browsers'
         run: npx playwright install --with-deps
 
-      - name: 'Run Playwright Regression Tests on BrowserStack'
-        id: test_project
+      - name: 'Run Playwright Tests in Parallel on BrowserStack'
+        id: test_execution
         run: |
           mkdir -p test-results/
           
@@ -102,10 +84,10 @@ jobs:
           BROWSERSTACK_ACCESS_KEY=${{ secrets.BROWSERSTACK_ACCESS_KEY }} \
           npx playwright test tests/testcases/api/ --grep '${{ github.event.inputs.testGroup }}' \
           --project=${{ github.event.inputs.browserConfig }} \
-          --retries=${{ github.event.inputs.enableTestRetry }} \
-          --workers=4"
+          --workers=${{ github.event.inputs.parallelRuns }} \
+          --retries=${{ github.event.inputs.enableTestRetry }}"
 
-          echo "Executing command: $PLAYWRIGHT_COMMAND"
+          echo "Executing: $PLAYWRIGHT_COMMAND"
           eval $PLAYWRIGHT_COMMAND
 
       - name: 'Generate Allure Report'
@@ -127,13 +109,13 @@ jobs:
           path: test-results/
           retention-days: 7
 
-      - name: 'Post Slack Report (Optional)'
+      - name: 'Send Slack Report (Optional)'
         if: env.ENABLE_SLACK_REPORT == 'true'
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_TOKEN }}
         with:
-          args: 'Regression Tests completed for VeriFlow - Env: ${{ env.APP_ENVIRONMENT }}'
+          args: 'Parallel Regression Tests completed for VeriFlow - Env: ${{ github.event.inputs.appEnvironment }} - Threads: ${{ github.event.inputs.parallelRuns }}'
 
   publish-report:
     needs: test

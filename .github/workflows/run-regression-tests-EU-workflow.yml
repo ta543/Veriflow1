@@ -1,4 +1,4 @@
-name: VeriFlow | Run Regression Tests [Parallel]
+name: VeriFlow | Regression Tests [Single Thread]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -37,7 +37,7 @@ on:
       parallelRuns:
         description: 'Number of Parallel Threads'
         required: true
-        default: '4'
+        default: '1'
         type: string
       enableTestRetry:
         description: 'Enable Test Retry for Failures'
