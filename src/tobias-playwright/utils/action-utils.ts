@@ -3,7 +3,7 @@
  * These actions include navigation, interaction with page elements, handling of dialogs, and more.
  */
 import { Dialog, Locator, Response } from '@playwright/test';
-import { getPage } from './page-utils';
+import { getPage } from '@PageUtils';
 import {
   CheckOptions,
   ClearOptions,
@@ -21,9 +21,10 @@ import {
   UploadValues,
   WaitForLoadStateOptions,
 } from '../setup/optional-parameter-types';
-import { STANDARD_TIMEOUT } from './timeout-constants';
+import { STANDARD_TIMEOUT } from '@TimeoutConstants';
 import { LOADSTATE } from '../../../playwright.config';
-import { getLocator } from './locator-utils';
+import { getLocator, getLocatorByRole } from '@LocatorUtils';
+import { expectElementToBeVisible } from '@AssertUtils';
 
 /**
  * 1. Navigations: This section contains functions for navigating within a web page or between web pages.
@@ -73,6 +74,17 @@ export async function goBack(options?: NavigationOptions): Promise<void> {
 }
 
 /**
+ * Handles JavaScript prompt popups by entering text and accepting the dialog.
+ * @param {string} promptText - The text to enter into the prompt dialog.
+ */
+export async function handlePromptPopup(promptText: string): Promise<void> {
+  getPage().once('dialog', async (dialog: Dialog) => {
+    console.log(`📌 Prompt detected: ${dialog.message()}`);
+    await dialog.accept(promptText); // ✅ Accepts the prompt with `promptText`
+  });
+}
+
+/**
  * Waits for a specified amount of time.
  * @param {number} ms - The amount of time to wait in milliseconds.
  */
@@ -92,8 +104,25 @@ export async function wait(ms: number): Promise<void> {
  * @param {ClickOptions} options - The click options.
  */
 export async function click(input: string | Locator, options?: ClickOptions): Promise<void> {
-  const locator = getLocator(input);
+  const locator = typeof input === 'string' ? getLocator(input) : input; // Only convert if it's a string
   await locator.click(options);
+}
+
+/**
+ * Clicks the consent button if it appears within a given timeout.
+ * Ensures the test doesn't fail if the popup is not present.
+ * @returns {Promise<void>} - Resolves when the consent button is clicked or if no popup is present.
+ */
+export async function acceptConsentIfVisible(): Promise<void> {
+  const consentPopupHeading = getLocatorByRole('heading', { name: 'This site asks for consent to' });
+  const consentButton = getLocatorByRole('button', { name: 'Consent' });
+
+  if (await consentPopupHeading.isVisible({ timeout: 2000 })) {
+    await expectElementToBeVisible(consentPopupHeading);
+    await click(consentPopupHeading);
+    await expectElementToBeVisible(consentButton);
+    await click(consentButton);
+  }
 }
 
 /**
@@ -118,6 +147,23 @@ export async function clickAndNavigate(input: string | Locator, options?: ClickO
 export async function fill(input: string | Locator, value: string, options?: FillOptions): Promise<void> {
   const locator = getLocator(input);
   await locator.fill(value, options);
+}
+
+/**
+ * Waits for a file to be downloaded and returns the file path.
+ * @returns {Promise<string>} - The path of the downloaded file.
+ */
+export async function waitForDownload(): Promise<string> {
+  const download = await getPage().waitForEvent('download');
+  return download.path();
+}
+
+/**
+ * Waits for a popup window to open and returns the new page instance.
+ * @returns {Promise<void>} - Resolves when the popup appears.
+ */
+export async function waitForPopup(): Promise<void> {
+  await getPage().waitForEvent('popup');
 }
 
 /**

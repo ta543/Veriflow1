@@ -5,7 +5,7 @@
  * It also includes functions for switching between pages, closing pages, and reverting to the default page.
  */
 
-import { SMALL_TIMEOUT } from 'utils/timeout-constants';
+import { SMALL_TIMEOUT } from '@TimeoutConstants';
 import { Page } from '@playwright/test';
 
 let page: Page;
